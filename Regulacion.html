@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <title>Regulacion - Edukidz</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="css.css">
+  <link rel="icon" type="image/png" href="Imagenes/logo.png">
+
+  <style>
+    @font-face {
+      font-family: 'Guby';
+      src: url('fonts/gubybambam3d.otf') format('opentype');
+    }
+
+    body {
+      background-image:
+        linear-gradient(rgba(232,248,255,.35), rgba(237,255,244,.35)),
+        url(Imagenes/fondo2.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,230,120,.35), transparent 18%),
+        radial-gradient(circle at 85% 30%, rgba(120,220,255,.35), transparent 18%),
+        radial-gradient(circle at 50% 90%, rgba(160,255,180,.30), transparent 20%);
+      animation: fondoVivo 8s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes fondoVivo {
+      from { filter: hue-rotate(0deg); opacity: .8; }
+      to { filter: hue-rotate(12deg); opacity: 1; }
+    }
+
+    main {
+      margin-top: 90px;
+    }
+
+    .contenido {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px;
+      background: rgba(255,255,255,.93);
+      border: 4px solid #d8f1ff;
+      border-radius: 34px;
+      box-shadow: 0 20px 45px rgba(70,150,220,.18);
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contenido::before {
+      content: "☁️";
+      position: absolute;
+      top: 20px;
+      left: 25px;
+      font-size: 45px;
+      animation: flotar 4s ease-in-out infinite;
+    }
+
+    .contenido::after {
+      content: "✨";
+      position: absolute;
+      top: 35px;
+      right: 35px;
+      font-size: 38px;
+      animation: girar 4s linear infinite;
+    }
+
+    .page-banner {
+      background: linear-gradient(90deg, #c9f5ff, #d8ffd8);
+      border-radius: 24px;
+      padding: 20px;
+      margin-bottom: 35px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 12px 25px rgba(80,180,255,.16);
+    }
+
+    .page-banner-logo img {
+      width: 75px;
+      height: 75px;
+      border-radius: 20px;
+      animation: flotar 2.5s ease-in-out infinite;
+    }
+
+    .page-banner-texto p {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: #28425c;
+    }
+
+    .contenido h1 {
+      font-family: 'Guby';
+      letter-spacing: 2px;
+      color: #2368b8;
+      font-size: 58px;
+      margin-bottom: 25px;
+      text-align: center;
+      text-shadow:
+        0 4px 0 #ffffff,
+        0 8px 0 rgba(25,100,190,.18),
+        0 12px 18px rgba(0,0,0,.18);
+      animation: tituloBounce 2.5s ease-in-out infinite;
+    }
+
+    @keyframes tituloBounce {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    .contenido p {
+      color: #2d3e50;
+      font-size: 20px;
+      line-height: 1.9;
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .palabra-modal {
+      color: #2368b8;
+      font-weight: 900;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 12px;
+      transition: .25s ease;
+      background: rgba(200,240,255,.45);
+    }
+
+    .palabra-modal:hover {
+      background: #d8f8ff;
+      color: #164f91;
+      transform: scale(1.08);
+      box-shadow: 0 5px 12px rgba(44,111,183,.18);
+    }
+
+    .imagen-central {
+      text-align: center;
+      margin: 35px 0;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, #ffffff, #f1fbff);
+      box-shadow: 0 15px 30px rgba(0,0,0,.10);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .imagen-central::before {
+      content: "🧠";
+      position: absolute;
+      left: 40px;
+      top: 25px;
+      font-size: 34px;
+      animation: flotar 2s infinite ease-in-out;
+    }
+
+    .imagen-central::after {
+      content: "🫁";
+      position: absolute;
+      right: 40px;
+      bottom: 25px;
+      font-size: 38px;
+      animation: respirarIcono 2s infinite ease-in-out;
+    }
+
+    .imagen-central img {
+      width: 100%;
+      max-width: 650px;
+      border-radius: 24px;
+      box-shadow: 0 12px 25px rgba(0,0,0,.18);
+    }
+
+    @keyframes respirarIcono {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.18); }
+    }
+
+    .info-boxes {
+      display: flex;
+      gap: 22px;
+      margin-top: 45px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .box {
+      flex: 1;
+      min-width: 250px;
+      background: linear-gradient(180deg, #eafaff, #e6ffe9);
+      padding: 25px;
+      border-radius: 26px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+      transition: .25s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,.9);
+    }
+
+    .box::before {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background: rgba(115,215,255,.20);
+      border-radius: 50%;
+      top: -60px;
+      right: -60px;
+    }
+
+    .box::after {
+      content: "✨";
+      position: absolute;
+      bottom: 12px;
+      right: 18px;
+      font-size: 22px;
+      opacity: .65;
+      animation: girar 5s linear infinite;
+    }
+
+    .box:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 18px 32px rgba(44,111,183,.22);
+    }
+
+    .box h3 {
+      font-family: 'Guby';
+      letter-spacing: 1px;
+      color: #2c6fb7;
+      font-size: 28px;
+      margin-bottom: 12px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      text-shadow:
+        0 3px 0 #ffffff,
+        0 6px 0 rgba(25,100,190,.18),
+        0 8px 12px rgba(0,0,0,.14);
+    }
+
+    .box p {
+      font-size: 16px;
+      margin: 0;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .dato-curioso {
+      margin-top: 35px;
+      background: linear-gradient(180deg, #fff7d8, #fff1b8);
+      border-left: 8px solid #f0c419;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .dato-curioso:hover {
+      transform: scale(1.03);
+    }
+
+    .dato-curioso h2 {
+      font-family: 'Guby';
+      color: #c07d00;
+      font-size: 34px;
+      text-align: center;
+      margin-top: 0;
+      text-shadow: 0 3px 0 #ffffff;
+    }
+
+    .ejercicio-respiracion {
+      margin-top: 40px;
+      background: linear-gradient(180deg, #eef7ff, #ffffff);
+      border-radius: 28px;
+      padding: 34px 28px;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+
+    .ejercicio-respiracion h2 {
+      color: #2c6fb7;
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .panel-juego-respiracion {
+      margin-top: 20px;
+      background: #f8fbff;
+      border-radius: 22px;
+      padding: 24px 20px 28px;
+      box-shadow: inset 0 0 0 2px #dcecff;
+    }
+
+    .marcador-respiracion {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .mini-dato {
+      background: linear-gradient(180deg,#fff3dc,#fff9e8);
+      color: #2c6fb7;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    .respira-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .circulo-respira {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #aee3ff, #5ab0e6);
+      box-shadow: 0 14px 28px rgba(44,111,183,0.25);
+      transition: transform 1s ease, background 0.8s ease;
+      position: relative;
+      margin-top: 8px;
+    }
+
+    .circulo-respira.inhalar {
+      transform: scale(1.35);
+      background: radial-gradient(circle at 30% 30%, #c6f3d3, #49c779);
+    }
+
+    .circulo-respira.mantener {
+      transform: scale(1.35);
+      background: radial-gradient(circle at 30% 30%, #fff2b6, #f2c94c);
+    }
+
+    .circulo-respira.exhalar {
+      transform: scale(1);
+      background: radial-gradient(circle at 30% 30%, #aee3ff, #5ab0e6);
+    }
+
+    .texto-circulo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      width: 100%;
+      text-align: center;
+    }
+
+    .contador {
+      font-size: 24px;
+      color: #2c6fb7;
+      font-weight: bold;
+      min-height: 32px;
+    }
+
+    .mensaje-juego-respiracion {
+      font-size: 20px;
+      font-weight: bold;
+      color: #1f3c5c;
+      min-height: 28px;
+    }
+
+    .barra-rondas {
+      width: 100%;
+      max-width: 420px;
+      height: 16px;
+      margin: 20px auto 0;
+      background: #dcecff;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .barra-rondas-progreso {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg,#2c6fb7,#3aa66b);
+      border-radius: 999px;
+      transition: width 0.4s ease;
+    }
+
+    .botones {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .botones button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .botones button:hover {
+      transform: scale(1.04);
+    }
+
+    .btn-start {
+      background: #2c6fb7;
+      color: white;
+    }
+
+    .btn-reset {
+      background: #3aa66b;
+      color: white;
+    }
+
+    .modal-fondo {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,25,45,.25);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+      overflow: hidden;
+      animation: fondoAparece .3s ease;
+    }
+
+    .modal-fondo.activo {
+      display: flex;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 560px;
+      background: linear-gradient(145deg, #ffffff, #dcf7ff, #eaffd8);
+      border-radius: 32px;
+      padding: 35px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0,0,0,.25);
+      border: 4px solid #ffffff;
+      animation: modalEntrada .45s ease;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    .modal-card::before {
+      content: "";
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      background: rgba(92,204,255,.25);
+      border-radius: 50%;
+      top: -80px;
+      right: -80px;
+    }
+
+    .cerrar-modal {
+      position: absolute;
+      top: 15px;
+      right: 18px;
+      width: 42px;
+      height: 42px;
+      border: 3px solid #bdefff;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #1f3c5c;
+      font-size: 22px;
+      cursor: pointer;
+      z-index: 20;
+    }
+
+    .modal-video {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 10px;
+      position: relative;
+      z-index: 3;
+      animation: flotar 2s ease-in-out infinite;
+      filter: drop-shadow(0 0 18px rgba(94,190,255,.45));
+    }
+
+    .modal-video img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .modal-card h2 {
+      font-family: 'Guby';
+      letter-spacing: 2px;
+      color: #2368b8;
+      font-size: 40px;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 3;
+      text-shadow:
+        0 4px 0 #ffffff,
+        0 8px 0 rgba(25,100,190,.18),
+        0 12px 18px rgba(0,0,0,.18);
+    }
+
+    .modal-card p {
+      color: #2d3e50;
+      font-size: 19px;
+      line-height: 1.7;
+      margin: 0;
+      position: relative;
+      z-index: 3;
+    }
+
+    .burbuja {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(80,200,255,.35);
+      z-index: 1;
+      animation: subir 4s infinite ease-in-out;
+    }
+
+    .b1 { width: 25px; height: 25px; left: 40px; bottom: 30px; }
+    .b2 { width: 18px; height: 18px; right: 80px; bottom: 60px; animation-delay: 1s; }
+    .b3 { width: 14px; height: 14px; left: 80px; top: 80px; animation-delay: 2s; }
+    .b4 { width: 20px; height: 20px; right: 130px; top: 90px; animation-delay: 1.5s; }
+
+    .estrella {
+      position: absolute;
+      font-size: 24px;
+      z-index: 2;
+      animation: girar 4s linear infinite;
+    }
+
+    .e1 { top: 25px; left: 35px; }
+    .e2 { bottom: 25px; right: 40px; animation-delay: 1s; }
+
+    @keyframes modalEntrada {
+      from { opacity: 0; transform: translateY(35px) scale(.85); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes fondoAparece {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes flotar {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes subir {
+      0% { transform: translateY(0); opacity: .3; }
+      50% { transform: translateY(-25px); opacity: 1; }
+      100% { transform: translateY(0); opacity: .3; }
+    }
+
+    @keyframes girar {
+      from { transform: rotate(0deg) scale(1); }
+      to { transform: rotate(360deg) scale(1.1); }
+    }
+
+    @media(max-width:768px) {
+      .contenido { margin: 20px; padding: 25px; }
+      .contenido h1 { font-size: 36px; }
+      .contenido p { font-size: 17px; }
+      .circulo-respira { width: 140px; height: 140px; }
+      .texto-circulo { font-size: 22px; }
+      .modal-card { padding: 30px 22px; }
+      .modal-card h2 { font-size: 28px; }
+      .modal-card p { font-size: 16px; }
+      .modal-video { width: 110px; height: 110px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="main-nav">
+    <div class="logo">
+      <a href="index.html">
+        <img src="Imagenes/logo.png" alt="Logo Edukidz">
+      </a>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="Respiracion.html">Respiracion</a></li>
+        <li><a href="Intercambio_gases.html">Intercambio</a></li>
+        <li><a href="Regulacion.html" class="activo">Regulacion</a></li>
+        <li><a href="limpieza_del_aire.html">Limpieza del Aire</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-icons">
+      <a href="Juegos.html" class="juegos-btn">
+        <span class="juegos-texto">Juegos</span>
+        <span class="juegos-icono">🎮</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="contenido">
+
+  <div class="page-banner regulacion">
+    <div class="page-banner-logo">
+      <img src="Imagenes/logo.png" alt="Logo Edukidz">
+    </div>
+
+    <div class="page-banner-texto">
+      <p>Conoce como el cuerpo controla la respiracion en cada momento.</p>
+    </div>
+  </div>
+
+  <h1>🧠 COMO REGULA EL CUERPO LA RESPIRACION?</h1>
+
+  <p>
+    Nuestro cuerpo sabe cuando debemos respirar mas rapido o mas despacio.
+    Eso se llama <span class="palabra-modal" onclick="abrirModal('regular')">regular la respiracion</span>.
+  </p>
+
+  <p>
+    Cuando corremos, jugamos o saltamos, nuestro cuerpo necesita mas
+    <span class="palabra-modal" onclick="abrirModal('oxigeno')">oxigeno</span>.
+    Entonces respiramos mas rapido. Cuando estamos tranquilos o dormimos,
+    respiramos mas lento.
+  </p>
+
+    <div class="imagen-central">
+    <img src="Imagenes/regulacion.png" alt="Regulacion de la respiracion">
+  </div>
+
+  <div class="info-boxes">
+
+    <div class="box" onclick="abrirModal('rapido')">
+      <h3>🏃 MAS RAPIDO</h3>
+      <p>
+        Cuando hacemos ejercicio, respiramos mas rapido porque el cuerpo necesita mas aire.
+      </p>
+    </div>
+
+    <div class="box" onclick="abrirModal('lento')">
+      <h3>😌 MAS LENTO</h3>
+      <p>
+        Cuando descansamos, respiramos mas despacio porque el cuerpo esta tranquilo.
+      </p>
+    </div>
+
+    <div class="box" onclick="abrirModal('siempre')">
+      <h3>🫁 SIEMPRE RESPIRAMOS</h3>
+      <p>
+        Nuestro cuerpo controla la respiracion todo el tiempo, incluso cuando dormimos.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="dato-curioso" onclick="abrirModal('cerebro')">
+    <h2>⭐ DATO CURIOSO</h2>
+    <p>
+      El cerebro ayuda a controlar la respiracion sin que tengamos que pensarlo.
+    </p>
+  </div>
+
+  <div class="ejercicio-respiracion">
+
+    <h2>🫁 Ejercicio de respiracion</h2>
+
+    <p>
+      Vamos a respirar juntos. Sigue las instrucciones:
+      inhala, manten el aire y luego exhala despacio.
+    </p>
+
+    <div class="panel-juego-respiracion">
+
+      <div class="marcador-respiracion">
+        <div class="mini-dato">
+          Ronda:
+          <span id="rondaRespiracion">0</span>/3
+        </div>
+
+        <div class="mini-dato">
+          Estrellas:
+          <span id="estrellasRespiracion">0</span> ⭐
+        </div>
+      </div>
+
+      <div class="respira-wrap">
+
+        <div id="circulo" class="circulo-respira">
+          <div id="texto" class="texto-circulo">Start</div>
+        </div>
+
+        <div id="contador" class="contador"></div>
+
+        <div id="mensajeJuego" class="mensaje-juego-respiracion">
+          Presiona empezar para jugar.
+        </div>
+
+      </div>
+
+      <div class="barra-rondas">
+        <div class="barra-rondas-progreso" id="barraRespiracion"></div>
+      </div>
+
+      <div class="botones">
+        <button id="btnStart" class="btn-start" onclick="toggleStartPause()">
+          ▶️ Empezar
+        </button>
+
+        <button class="btn-reset" onclick="reset()">
+          🔄 Reiniciar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+</main>
+
+<div id="modalFondo" class="modal-fondo" onclick="cerrarModalDesdeFondo(event)">
+
+  <div class="modal-card">
+
+    <div class="burbuja b1"></div>
+    <div class="burbuja b2"></div>
+    <div class="burbuja b3"></div>
+    <div class="burbuja b4"></div>
+
+    <div class="estrella e1">✨</div>
+    <div class="estrella e2">⭐</div>
+
+    <button class="cerrar-modal" onclick="cerrarModal()">×</button>
+
+    <div class="modal-video">
+      <img id="modalIcono" src="" alt="">
+    </div>
+
+    <h2 id="modalTitulo"></h2>
+
+    <p id="modalTexto"></p>
+
+  </div>
+
+</div>
+
+<script>
+
+let interval = null;
+let rondaActual = 0;
+let estrellas = 0;
+let totalRondas = 3;
+let pausado = false;
+let jugando = false;
+let faseActual = "";
+let tiempoRestante = 0;
+
+function actualizarUIJuego() {
+
+  document.getElementById("rondaRespiracion").innerText = rondaActual;
+
+  document.getElementById("estrellasRespiracion").innerText = estrellas;
+
+  document.getElementById("barraRespiracion").style.width =
+  (rondaActual / totalRondas) * 100 + "%";
+}
+
+function toggleStartPause() {
+
+  if(!jugando){
+    empezarJuego();
+    return;
+  }
+
+  if(pausado){
+
+    pausado = false;
+
+    document.getElementById("btnStart").innerText =
+    "⏸️ Pausar";
+
+    document.getElementById("mensajeJuego").innerText =
+    "Continuamos...";
+
+    continuarFase();
+
+  } else {
+
+    pausado = true;
+
+    clearInterval(interval);
+
+    document.getElementById("btnStart").innerText =
+    "▶️ Continuar";
+
+    document.getElementById("mensajeJuego").innerText =
+    "Juego pausado.";
+  }
+}
+
+function empezarJuego(){
+
+  reset(false);
+
+  jugando = true;
+  pausado = false;
+  rondaActual = 0;
+  estrellas = 0;
+
+  actualizarUIJuego();
+
+  document.getElementById("btnStart").innerText =
+  "⏸️ Pausar";
+
+  document.getElementById("mensajeJuego").innerText =
+  "Comienza la ronda 1!";
+
+  ciclo();
+}
+
+function ciclo(){
+
+  if(rondaActual >= totalRondas){
+    finalizarJuego();
+    return;
+  }
+
+  iniciarFase("inhalar",4);
+}
+
+function iniciarFase(fase, tiempo){
+
+  faseActual = fase;
+  tiempoRestante = tiempo;
+
+  const texto = document.getElementById("texto");
+  const circulo = document.getElementById("circulo");
+  const mensaje = document.getElementById("mensajeJuego");
+
+  if(fase === "inhalar"){
+
+    texto.innerText = "Inhala";
+
+    circulo.className =
+    "circulo-respira inhalar";
+
+    mensaje.innerText =
+    "Toma aire lentamente...";
+  }
+
+  if(fase === "mantener"){
+
+    texto.innerText = "Manten";
+
+    circulo.className =
+    "circulo-respira mantener";
+
+    mensaje.innerText =
+    "Manten el aire...";
+  }
+
+  if(fase === "exhalar"){
+
+    texto.innerText = "Exhala";
+
+    circulo.className =
+    "circulo-respira exhalar";
+
+    mensaje.innerText =
+    "Suelta el aire despacio...";
+  }
+
+  continuarFase();
+}
+
+function continuarFase(){
+
+  clearInterval(interval);
+
+  document.getElementById("contador").innerText =
+  tiempoRestante + " segundos";
+
+  interval = setInterval(() => {
+
+    if(pausado) return;
+
+    tiempoRestante--;
+
+    document.getElementById("contador").innerText =
+    tiempoRestante + " segundos";
+
+    if(tiempoRestante <= 0){
+
+      clearInterval(interval);
+
+      if(faseActual === "inhalar"){
+
+        iniciarFase("mantener",2);
+
+      } else if(faseActual === "mantener"){
+
+        iniciarFase("exhalar",4);
+
+      } else if(faseActual === "exhalar"){
+
+        rondaActual++;
+        estrellas++;
+
+        actualizarUIJuego();
+
+        if(rondaActual < totalRondas){
+
+          document.getElementById("mensajeJuego").innerText =
+          "Bien hecho! Vamos a la ronda " + (rondaActual + 1);
+
+          setTimeout(() => {
+
+            if(!pausado){
+              ciclo();
+            }
+
+          },800);
+
+        } else {
+
+          finalizarJuego();
+        }
+      }
+    }
+
+  },1000);
+}
+
+function finalizarJuego(){
+
+  jugando = false;
+  pausado = false;
+
+  clearInterval(interval);
+
+  document.getElementById("texto").innerText =
+  "🌟";
+
+  document.getElementById("contador").innerText =
+  "";
+
+  document.getElementById("mensajeJuego").innerText =
+  "Terminaste el ejercicio de respiracion.";
+
+  document.getElementById("btnStart").innerText =
+  "▶️ Empezar";
+}
+
+function reset(limpiarMensaje = true){
+
+  clearInterval(interval);
+
+  jugando = false;
+  pausado = false;
+  faseActual = "";
+  tiempoRestante = 0;
+  rondaActual = 0;
+  estrellas = 0;
+
+  document.getElementById("texto").innerText =
+  "Start";
+
+  document.getElementById("contador").innerText =
+  "";
+
+  document.getElementById("circulo").className =
+  "circulo-respira";
+
+  document.getElementById("btnStart").innerText =
+  "▶️ Empezar";
+
+  actualizarUIJuego();
+
+  if(limpiarMensaje){
+
+    document.getElementById("mensajeJuego").innerText =
+    "Presiona empezar para jugar.";
+  }
+}
+
+function abrirModal(tipo){
+
+  const modal =
+  document.getElementById("modalFondo");
+
+  const titulo =
+  document.getElementById("modalTitulo");
+
+  const texto =
+  document.getElementById("modalTexto");
+
+  const icono =
+  document.getElementById("modalIcono");
+
+  if(tipo === "regular"){
+
+    titulo.textContent =
+    "COMO CONTROLA EL CUERPO?";
+
+    texto.textContent =
+    "El cuerpo sabe cuando respirar rapido o lento. El cerebro ayuda automaticamente.";
+
+    icono.src =
+    "Imagenes/regular.webp";
+  }
+
+  if(tipo === "oxigeno"){
+
+    titulo.textContent =
+    "POR QUE ES IMPORTANTE EL OXIGENO?";
+
+    texto.textContent =
+    "El oxigeno ayuda a tener energia para correr, jugar y aprender.";
+
+    icono.src =
+    "Imagenes/oxigeno.webp";
+  }
+
+  if(tipo === "rapido"){
+
+    titulo.textContent =
+    "POR QUE RESPIRAMOS RAPIDO?";
+
+    texto.textContent =
+    "Cuando corremos, el cuerpo necesita mas oxigeno.";
+
+    icono.src =
+    "Imagenes/correr.webp";
+  }
+
+  if(tipo === "lento"){
+
+    titulo.textContent =
+    "POR QUE RESPIRAMOS LENTO?";
+
+    texto.textContent =
+    "Cuando descansamos, respiramos lentamente porque el cuerpo esta tranquilo.";
+
+    icono.src =
+    "Imagenes/dormir.webp";
+  }
+
+  if(tipo === "siempre"){
+
+    titulo.textContent =
+    "SIEMPRE RESPIRAMOS";
+
+    texto.textContent =
+    "Incluso dormidos, el cuerpo sigue respirando.";
+
+    icono.src =
+    "Imagenes/pulmones.webp";
+  }
+
+  if(tipo === "cerebro"){
+
+    titulo.textContent =
+    "EL CEREBRO AYUDA";
+
+    texto.textContent =
+    "El cerebro envia señales para controlar la respiracion.";
+
+    icono.src =
+    "Imagenes/regular.webp";
+  }
+
+  modal.classList.add("activo");
+}
+
+function cerrarModal(){
+
+  document.getElementById("modalFondo")
+  .classList.remove("activo");
+}
+
+function cerrarModalDesdeFondo(event){
+
+  if(event.target.id === "modalFondo"){
+    cerrarModal();
+  }
+}
+
+actualizarUIJuego();
+
+</script>
+
+</body>
+</html>

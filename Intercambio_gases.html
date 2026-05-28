@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Intercambio de Gases - Edukidz</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="css.css">
+  <link rel="icon" type="image/png" href="Imagenes/logo.png">
+
+  <style>
+    @font-face{
+      font-family:'Guby';
+      src:url('fonts/gubybambam3d.otf') format('opentype');
+    }
+
+    body{
+      background-image:
+      linear-gradient(rgba(240,236,255,0.38), rgba(232,248,255,0.38)),
+      url(Imagenes/fondo2.png);
+      background-size:cover;
+      background-repeat:no-repeat;
+      background-attachment:fixed;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at 15% 20%, rgba(255,230,120,.35), transparent 18%),
+      radial-gradient(circle at 85% 30%, rgba(120,220,255,.35), transparent 18%),
+      radial-gradient(circle at 50% 90%, rgba(190,160,255,.25), transparent 20%);
+      animation:fondoVivo 8s ease-in-out infinite alternate;
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    @keyframes fondoVivo{
+      from{filter:hue-rotate(0deg); opacity:.8;}
+      to{filter:hue-rotate(12deg); opacity:1;}
+    }
+
+    main{
+      margin-top:90px;
+    }
+
+    .contenido{
+      max-width:1100px;
+      margin:auto;
+      padding:40px;
+      background:rgba(255,255,255,.93);
+      border:4px solid #e3ddff;
+      border-radius:34px;
+      box-shadow:0 20px 45px rgba(90,120,220,.18);
+      backdrop-filter:blur(8px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .contenido::before{
+      content:"🫧";
+      position:absolute;
+      top:20px;
+      left:25px;
+      font-size:45px;
+      animation:flotar 4s ease-in-out infinite;
+    }
+
+    .contenido::after{
+      content:"✨";
+      position:absolute;
+      top:35px;
+      right:35px;
+      font-size:38px;
+      animation:girar 4s linear infinite;
+    }
+
+    .page-banner{
+      background:linear-gradient(90deg,#e7ddff,#d7f6ff);
+      border-radius:24px;
+      padding:20px;
+      margin-bottom:35px;
+      display:flex;
+      align-items:center;
+      gap:20px;
+      box-shadow:0 12px 25px rgba(120,120,255,.16);
+    }
+
+    .page-banner-logo img{
+      width:75px;
+      height:75px;
+      border-radius:20px;
+      animation:flotar 2.5s ease-in-out infinite;
+    }
+
+    .page-banner-texto p{
+      margin:0;
+      font-size:20px;
+      font-weight:700;
+      color:#28425c;
+    }
+
+    .contenido h1{
+      font-family:'Guby';
+      letter-spacing:2px;
+      color:#2368b8;
+      font-size:56px;
+      margin-bottom:25px;
+      text-align:center;
+      text-shadow:
+      0 4px 0 #ffffff,
+      0 8px 0 rgba(25,100,190,.18),
+      0 12px 18px rgba(0,0,0,.18);
+      animation:tituloBounce 2.5s ease-in-out infinite;
+    }
+
+    @keyframes tituloBounce{
+      0%,100%{transform:scale(1);}
+      50%{transform:scale(1.03);}
+    }
+
+    .contenido p{
+      color:#2d3e50;
+      font-size:20px;
+      line-height:1.9;
+      margin-bottom:22px;
+      text-align:center;
+    }
+
+    .palabra-modal{
+      color:#2368b8;
+      font-weight:900;
+      cursor:pointer;
+      padding:4px 8px;
+      border-radius:12px;
+      transition:.25s ease;
+      background:rgba(200,240,255,.55);
+    }
+
+    .palabra-modal:hover{
+      background:#d8f8ff;
+      color:#164f91;
+      transform:scale(1.08);
+      box-shadow:0 5px 12px rgba(44,111,183,.18);
+    }
+
+    .imagen-central{
+      text-align:center;
+      margin:35px 0;
+      padding:25px;
+      border-radius:28px;
+      background:linear-gradient(180deg,#ffffff,#f1fbff);
+      box-shadow:0 15px 30px rgba(0,0,0,.10);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .imagen-central::before{
+      content:"🩸";
+      position:absolute;
+      left:40px;
+      top:25px;
+      font-size:34px;
+      animation:flotar 2s infinite ease-in-out;
+    }
+
+    .imagen-central::after{
+      content:"💨";
+      position:absolute;
+      right:40px;
+      bottom:25px;
+      font-size:38px;
+      animation:respirarIcono 2s infinite ease-in-out;
+    }
+
+    .imagen-central img{
+      width:450px;
+      max-width:100%;
+      height:auto;
+      display:block;
+      margin:0 auto;
+      border-radius:24px;
+      box-shadow:0 12px 25px rgba(0,0,0,.18);
+    }
+
+    @keyframes respirarIcono{
+      0%,100%{transform:scale(1);}
+      50%{transform:scale(1.18);}
+    }
+
+    .info-boxes{
+      display:flex;
+      gap:22px;
+      margin-top:45px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .box{
+      flex:1;
+      min-width:250px;
+      background:linear-gradient(180deg,#f4efff,#eaf7ff);
+      padding:25px;
+      border-radius:26px;
+      box-shadow:0 10px 22px rgba(0,0,0,.08);
+      transition:.25s ease;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+      border:3px solid rgba(255,255,255,.9);
+    }
+
+    .box::before{
+      content:"";
+      position:absolute;
+      width:140px;
+      height:140px;
+      background:rgba(160,140,255,.18);
+      border-radius:50%;
+      top:-60px;
+      right:-60px;
+    }
+
+    .box::after{
+      content:"✨";
+      position:absolute;
+      bottom:12px;
+      right:18px;
+      font-size:22px;
+      opacity:.65;
+      animation:girar 5s linear infinite;
+    }
+
+    .box:hover{
+      transform:translateY(-8px) scale(1.05);
+      box-shadow:0 18px 32px rgba(44,111,183,.22);
+    }
+
+    .box h3{
+      font-family:'Guby';
+      letter-spacing:1px;
+      color:#2c6fb7;
+      font-size:28px;
+      margin-bottom:12px;
+      text-align:center;
+      position:relative;
+      z-index:2;
+      text-shadow:
+      0 3px 0 #ffffff,
+      0 6px 0 rgba(25,100,190,.18),
+      0 8px 12px rgba(0,0,0,.14);
+    }
+
+    .box p{
+      font-size:16px;
+      margin:0;
+      text-align:center;
+      position:relative;
+      z-index:2;
+    }
+
+    .dato-curioso{
+      margin-top:40px;
+      background:linear-gradient(180deg,#fff7d8,#fff1b8);
+      border-left:10px solid #f0c419;
+      border-radius:24px;
+      padding:24px;
+      box-shadow:0 10px 22px rgba(0,0,0,.10);
+      position:relative;
+      overflow:hidden;
+      cursor:pointer;
+      transition:.25s ease;
+    }
+
+    .dato-curioso:hover{
+      transform:scale(1.03);
+    }
+
+    .dato-curioso::after{
+      content:"⭐";
+      position:absolute;
+      right:25px;
+      top:18px;
+      font-size:34px;
+      animation:girar 4s linear infinite;
+    }
+
+    .dato-curioso h2{
+      font-family:'Guby';
+      margin-top:0;
+      margin-bottom:10px;
+      color:#c07d00;
+      font-size:34px;
+      text-align:center;
+      text-shadow:0 3px 0 #ffffff;
+    }
+
+    .dato-curioso p{
+      margin-bottom:0;
+      font-size:18px;
+      text-align:center;
+    }
+
+    .modal-fondo{
+      position:fixed;
+      inset:0;
+      background:rgba(10,25,45,.25);
+      backdrop-filter:blur(8px);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+      padding:20px;
+      overflow:hidden;
+      animation:fondoAparece .3s ease;
+    }
+
+    .modal-fondo.activo{
+      display:flex;
+    }
+
+    .modal-card{
+      width:100%;
+      max-width:560px;
+      background:linear-gradient(145deg,#ffffff,#e6f4ff,#f0eaff);
+      border-radius:32px;
+      padding:35px;
+      text-align:center;
+      position:relative;
+      box-shadow:0 25px 60px rgba(0,0,0,.25);
+      border:4px solid #ffffff;
+      animation:modalEntrada .45s ease;
+      overflow:hidden;
+      z-index:5;
+    }
+
+    .modal-card::before{
+      content:"";
+      position:absolute;
+      width:210px;
+      height:210px;
+      background:rgba(150,190,255,.25);
+      border-radius:50%;
+      top:-80px;
+      right:-80px;
+    }
+
+    .cerrar-modal{
+      position:absolute;
+      top:15px;
+      right:18px;
+      width:42px;
+      height:42px;
+      border:3px solid #c8dcff;
+      border-radius:50%;
+      background:#ffffff;
+      color:#1f3c5c;
+      font-size:22px;
+      cursor:pointer;
+      box-shadow:0 6px 16px rgba(0,0,0,.12);
+      transition:.25s ease;
+      z-index:20;
+    }
+
+    .cerrar-modal:hover{
+      transform:rotate(90deg) scale(1.1);
+      background:#eef5ff;
+    }
+
+    .modal-video{
+      width:130px;
+      height:130px;
+      margin:0 auto 10px;
+      position:relative;
+      z-index:3;
+      animation:flotar 2s ease-in-out infinite;
+      filter:drop-shadow(0 0 18px rgba(94,190,255,.45));
+    }
+
+    .modal-video img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+
+    .modal-card h2{
+      font-family:'Guby';
+      letter-spacing:2px;
+      color:#2368b8;
+      font-size:40px;
+      margin-bottom:15px;
+      position:relative;
+      z-index:3;
+      text-shadow:
+      0 4px 0 #ffffff,
+      0 8px 0 rgba(25,100,190,.18),
+      0 12px 18px rgba(0,0,0,.18);
+    }
+
+    .modal-card p{
+      color:#2d3e50;
+      font-size:19px;
+      line-height:1.7;
+      margin:0;
+      position:relative;
+      z-index:3;
+    }
+
+    .burbuja{
+      position:absolute;
+      border-radius:50%;
+      background:rgba(80,200,255,.35);
+      z-index:1;
+      animation:subir 4s infinite ease-in-out;
+    }
+
+    .b1{width:25px;height:25px;left:40px;bottom:30px;}
+    .b2{width:18px;height:18px;right:80px;bottom:60px;animation-delay:1s;}
+    .b3{width:14px;height:14px;left:80px;top:80px;animation-delay:2s;}
+    .b4{width:20px;height:20px;right:130px;top:90px;animation-delay:1.5s;}
+
+    .estrella{
+      position:absolute;
+      font-size:24px;
+      z-index:2;
+      animation:girar 4s linear infinite;
+    }
+
+    .e1{top:25px;left:35px;}
+    .e2{bottom:25px;right:40px;animation-delay:1s;}
+
+    .viento-pantalla{
+      position:fixed;
+      left:-15%;
+      opacity:0;
+      z-index:1;
+      pointer-events:none;
+      animation-name:vientoPantalla;
+      animation-timing-function:linear;
+      animation-iteration-count:infinite;
+      filter:drop-shadow(0 0 10px rgba(80,200,255,.45));
+    }
+
+    .viento-1{top:5%;width:75px;animation-duration:7s;animation-delay:0s;}
+    .viento-2{top:15%;width:110px;animation-duration:11s;animation-delay:2s;}
+    .viento-3{top:28%;width:90px;animation-duration:8s;animation-delay:1s;}
+    .viento-4{top:40%;width:150px;animation-duration:13s;animation-delay:3s;}
+    .viento-5{top:52%;width:100px;animation-duration:9s;animation-delay:5s;}
+    .viento-6{top:65%;width:130px;animation-duration:12s;animation-delay:1.5s;}
+    .viento-7{top:78%;width:85px;animation-duration:8s;animation-delay:4s;}
+    .viento-8{top:88%;width:115px;animation-duration:10s;animation-delay:2.5s;}
+
+    @keyframes vientoPantalla{
+      0%{transform:translateX(0) translateY(0) rotate(0deg) scale(.7);opacity:0;}
+      10%{opacity:.95;}
+      50%{transform:translateX(60vw) translateY(-18px) rotate(3deg) scale(1);}
+      100%{transform:translateX(130vw) translateY(15px) rotate(-2deg) scale(1.15);opacity:0;}
+    }
+
+    @keyframes modalEntrada{
+      from{opacity:0;transform:translateY(35px) scale(.85);}
+      to{opacity:1;transform:translateY(0) scale(1);}
+    }
+
+    @keyframes fondoAparece{
+      from{opacity:0;}
+      to{opacity:1;}
+    }
+
+    @keyframes flotar{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-8px);}
+    }
+
+    @keyframes subir{
+      0%{transform:translateY(0);opacity:.3;}
+      50%{transform:translateY(-25px);opacity:1;}
+      100%{transform:translateY(0);opacity:.3;}
+    }
+
+    @keyframes girar{
+      from{transform:rotate(0deg) scale(1);}
+      to{transform:rotate(360deg) scale(1.1);}
+    }
+
+    @media(max-width:768px){
+      .contenido{
+        margin:20px;
+        padding:25px;
+      }
+
+      .contenido h1{
+        font-size:36px;
+      }
+
+      .contenido p{
+        font-size:17px;
+      }
+
+      .modal-card{
+        padding:30px 22px;
+      }
+
+      .modal-card h2{
+        font-size:28px;
+      }
+
+      .modal-card p{
+        font-size:16px;
+      }
+
+      .modal-video{
+        width:110px;
+        height:110px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="main-nav">
+    <div class="logo">
+      <a href="index.html">
+        <img src="Imagenes/logo.png" alt="Logo Edukidz">
+      </a>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="Respiracion.html">Respiracion</a></li>
+        <li><a href="Intercambio_gases.html" class="activo">Intercambio</a></li>
+        <li><a href="Regulacion.html">Regulacion</a></li>
+        <li><a href="limpieza_del_aire.html">Limpieza del Aire</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-icons">
+      <a href="Juegos.html" class="juegos-btn">
+        <span class="juegos-texto">Juegos</span>
+        <span class="juegos-icono">🎮</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="contenido">
+
+    <div class="page-banner intercambio">
+      <div class="page-banner-logo">
+        <img src="Imagenes/logo.png" alt="Logo Edukidz">
+      </div>
+
+      <div class="page-banner-texto">
+        <p>Descubre como el oxigeno viaja por el cuerpo y el dioxido de carbono sale.</p>
+      </div>
+    </div>
+
+    <h1>💨 QUE ES EL INTERCAMBIO DE GASES?</h1>
+
+    <p>
+      El <span class="palabra-modal" onclick="abrirModal('intercambio')">intercambio de gases</span>
+      ocurre dentro de los
+      <span class="palabra-modal" onclick="abrirModal('pulmones')">pulmones</span>.
+      Alli, el aire que respiramos lleva
+      <span class="palabra-modal" onclick="abrirModal('oxigeno')">oxigeno</span>,
+      que nuestro cuerpo necesita para vivir.
+    </p>
+
+    <p>
+      Cuando el aire entra en los pulmones, el
+      <span class="palabra-modal" onclick="abrirModal('oxigeno')">oxigeno</span>
+      pasa a la
+      <span class="palabra-modal" onclick="abrirModal('sangre')">sangre</span>.
+      Al mismo tiempo, la sangre deja un gas que el cuerpo ya no necesita, llamado
+      <span class="palabra-modal" onclick="abrirModal('carbono')">dioxido de carbono</span>.
+      Despues, ese gas sale de nuestro cuerpo cuando
+      <span class="palabra-modal" onclick="abrirModal('exhalar')">exhalamos</span>.
+    </p>
+
+    <div class="imagen-central">
+      <img src="Imagenes/intercambio.png" alt="Intercambio de gases en los pulmones">
+    </div>
+
+    <div class="info-boxes">
+
+      <div class="box" onclick="abrirModal('oxigeno')">
+        <h3>🫁 ENTRA OXIGENO</h3>
+        <p>Cuando inhalamos, el aire entra por la nariz o la boca y llega a los pulmones.</p>
+      </div>
+
+      <div class="box" onclick="abrirModal('sangre')">
+        <h3>❤️ VA A LA SANGRE</h3>
+        <p>El oxigeno pasa a la sangre y viaja por todo el cuerpo para darnos energia.</p>
+      </div>
+
+      <div class="box" onclick="abrirModal('carbono')">
+        <h3>💨 SALE DIOXIDO</h3>
+        <p>El cuerpo expulsa el dioxido de carbono cuando exhalamos el aire.</p>
+      </div>
+
+    </div>
+
+    <div class="dato-curioso" onclick="abrirModal('alveolos')">
+      <h2>⭐ DATO CURIOSO</h2>
+      <p>
+        Dentro de los pulmones hay unas bolsitas muy pequenas llamadas
+        <span class="palabra-modal">alveolos</span>.
+        Alli ocurre el intercambio de gases.
+      </p>
+    </div>
+
+  </section>
+</main>
+
+<div id="modalFondo" class="modal-fondo" onclick="cerrarModalDesdeFondo(event)">
+
+  <img src="Imagenes/viento.webp" class="viento-pantalla viento-1" alt="">
+  <img src="Imagenes/viento.webp" class="viento-pantalla viento-2" alt="">
+  <img src="Imagenes/viento.webp" class="viento-pantalla viento-3" alt="">
+  <img src="Imagenes/viento.webp" class="viento-pantalla viento-4" alt="">
+  <img src="Imagenes/viento.webp" class="viento-pantalla viento-5" alt="">
+  <img src="Imagenes/viento.webp" class="viento-pantalla viento-6" alt="">
+  <img src="Imagenes/viento.webp" class="viento-pantalla viento-7" alt="">
+  <img src="Imagenes/viento.webp" class="viento-pantalla viento-8" alt="">
+
+  <div class="modal-card">
+
+    <span class="burbuja b1"></span>
+    <span class="burbuja b2"></span>
+    <span class="burbuja b3"></span>
+    <span class="burbuja b4"></span>
+
+    <span class="estrella e1">✨</span>
+    <span class="estrella e2">⭐</span>
+
+    <button class="cerrar-modal" onclick="cerrarModal()">×</button>
+
+    <div class="modal-video">
+      <img id="modalIcono" src="Imagenes/oxigeno.webp" alt="">
+    </div>
+
+    <h2 id="modalTitulo"></h2>
+    <p id="modalTexto"></p>
+
+  </div>
+</div>
+
+<script>
+function abrirModal(tipo){
+  const modal = document.getElementById("modalFondo");
+  const titulo = document.getElementById("modalTitulo");
+  const texto = document.getElementById("modalTexto");
+  const icono = document.getElementById("modalIcono");
+
+  if(tipo === "intercambio"){
+    titulo.textContent = "QUE ES EL INTERCAMBIO?";
+    texto.textContent = "Es el momento en que el oxigeno entra a la sangre y el dioxido de carbono sale del cuerpo. Es como un pequeno cambio que ocurre dentro de los pulmones.";
+    icono.src = "Imagenes/intercambiogases.png";
+  }
+
+  if(tipo === "pulmones"){
+    titulo.textContent = "QUE HACEN LOS PULMONES?";
+    texto.textContent = "Los pulmones reciben el aire cuando inhalamos. Dentro de ellos ocurre el intercambio de gases para que el cuerpo reciba oxigeno.";
+    icono.src = "Imagenes/pulmones.webp";
+  }
+
+  if(tipo === "oxigeno"){
+    titulo.textContent = "POR QUE ES IMPORTANTE EL OXIGENO?";
+    texto.textContent = "El oxigeno ayuda a que nuestro cuerpo tenga energia. Viaja por la sangre para llegar a los musculos, al cerebro y a todos los organos.";
+    icono.src = "Imagenes/oxigeno.webp";
+  }
+
+  if(tipo === "sangre"){
+    titulo.textContent = "QUE HACE LA SANGRE?";
+    texto.textContent = "La sangre funciona como un camino rojo por donde viaja el oxigeno. Lo lleva a muchas partes del cuerpo para ayudarnos a movernos y aprender.";
+    icono.src = "Imagenes/sangre.webp";
+  }
+
+  if(tipo === "carbono"){
+    titulo.textContent = "QUE ES EL DIOXIDO DE CARBONO?";
+    texto.textContent = "El dioxido de carbono es un gas que el cuerpo ya no necesita. Por eso los pulmones ayudan a sacarlo cuando exhalamos.";
+    icono.src = "Imagenes/co2.webp";
+  }
+
+  if(tipo === "exhalar"){
+    titulo.textContent = "QUE PASA AL EXHALAR?";
+    texto.textContent = "Cuando exhalamos, el aire sale del cuerpo. En ese aire va el dioxido de carbono, que ya no necesitamos.";
+    icono.src = "Imagenes/respirar.webp";
+  }
+
+  if(tipo === "alveolos"){
+    titulo.textContent = "QUE SON LOS ALVEOLOS?";
+    texto.textContent = "Los alveolos son bolsitas muy pequenas dentro de los pulmones. Aunque son diminutas, ayudan a que el oxigeno pase a la sangre.";
+    icono.src = "Imagenes/alveolos.png";
+  }
+
+  modal.classList.add("activo");
+}
+
+function cerrarModal(){
+  document.getElementById("modalFondo").classList.remove("activo");
+}
+
+function cerrarModalDesdeFondo(event){
+  if(event.target.id === "modalFondo"){
+    cerrarModal();
+  }
+}
+</script>
+
+</body>
+</html>

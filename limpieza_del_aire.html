@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <title>Limpieza del Aire - Edukidz</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="css.css">
+  <link rel="icon" type="image/png" href="Imagenes/logo.png">
+
+  <style>
+    @font-face {
+      font-family: 'Guby';
+      src: url('fonts/gubybambam3d.otf') format('opentype');
+    }
+
+    body {
+      background-image:
+        linear-gradient(rgba(232,248,255,.35), rgba(237,255,244,.35)),
+        url(Imagenes/fondo2.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,230,120,.35), transparent 18%),
+        radial-gradient(circle at 85% 30%, rgba(120,220,255,.35), transparent 18%),
+        radial-gradient(circle at 50% 90%, rgba(160,255,180,.30), transparent 20%);
+      animation: fondoVivo 8s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes fondoVivo {
+      from { filter: hue-rotate(0deg); opacity: .8; }
+      to { filter: hue-rotate(12deg); opacity: 1; }
+    }
+
+    main {
+      margin-top: 90px;
+    }
+
+    .contenido {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px;
+      background: rgba(255,255,255,.93);
+      border: 4px solid #d8f1ff;
+      border-radius: 34px;
+      box-shadow: 0 20px 45px rgba(70,150,220,.18);
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contenido::before {
+      content: "🌿";
+      position: absolute;
+      top: 20px;
+      left: 25px;
+      font-size: 45px;
+      animation: flotar 4s ease-in-out infinite;
+    }
+
+    .contenido::after {
+      content: "✨";
+      position: absolute;
+      top: 35px;
+      right: 35px;
+      font-size: 38px;
+      animation: girar 4s linear infinite;
+    }
+
+    .page-banner {
+      background: linear-gradient(90deg, #c9f5ff, #d8ffd8);
+      border-radius: 24px;
+      padding: 20px;
+      margin-bottom: 35px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 12px 25px rgba(80,180,255,.16);
+    }
+
+    .page-banner-logo img {
+      width: 75px;
+      height: 75px;
+      border-radius: 20px;
+      animation: flotar 2.5s ease-in-out infinite;
+    }
+
+    .page-banner-texto p {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: #28425c;
+    }
+
+    .contenido h1 {
+      font-family: 'Guby';
+      letter-spacing: 2px;
+      color: #2368b8;
+      font-size: 58px;
+      margin-bottom: 25px;
+      text-align: center;
+      text-shadow:
+        0 4px 0 #ffffff,
+        0 8px 0 rgba(25,100,190,.18),
+        0 12px 18px rgba(0,0,0,.18);
+      animation: tituloBounce 2.5s ease-in-out infinite;
+    }
+
+    @keyframes tituloBounce {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    .contenido p {
+      color: #2d3e50;
+      font-size: 20px;
+      line-height: 1.9;
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .palabra-modal {
+      color: #2368b8;
+      font-weight: 900;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 12px;
+      transition: .25s ease;
+      background: rgba(200,240,255,.45);
+    }
+
+    .palabra-modal:hover {
+      background: #d8f8ff;
+      color: #164f91;
+      transform: scale(1.08);
+      box-shadow: 0 5px 12px rgba(44,111,183,.18);
+    }
+
+    .imagen-central {
+      text-align: center;
+      margin: 35px 0;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, #ffffff, #f1fbff);
+      box-shadow: 0 15px 30px rgba(0,0,0,.10);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .imagen-central::before {
+      content: "👃";
+      position: absolute;
+      left: 40px;
+      top: 25px;
+      font-size: 34px;
+      animation: flotar 2s infinite ease-in-out;
+    }
+
+    .imagen-central::after {
+      content: "💨";
+      position: absolute;
+      right: 40px;
+      bottom: 25px;
+      font-size: 38px;
+      animation: respirarIcono 2s infinite ease-in-out;
+    }
+
+    .imagen-central img {
+      width: 100%;
+      max-width: 680px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 24px;
+      box-shadow: 0 12px 25px rgba(0,0,0,.18);
+      background: rgba(255,255,255,0.95);
+      padding: 14px;
+    }
+
+    @keyframes respirarIcono {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.18); }
+    }
+
+    .info-boxes {
+      display: flex;
+      gap: 22px;
+      margin-top: 45px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .box {
+      flex: 1;
+      min-width: 250px;
+      background: linear-gradient(180deg, #eafaff, #e6ffe9);
+      padding: 25px;
+      border-radius: 26px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+      transition: .25s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,.9);
+    }
+
+    .box::before {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background: rgba(115,215,255,.20);
+      border-radius: 50%;
+      top: -60px;
+      right: -60px;
+    }
+
+    .box::after {
+      content: "✨";
+      position: absolute;
+      bottom: 12px;
+      right: 18px;
+      font-size: 22px;
+      opacity: .65;
+      animation: girar 5s linear infinite;
+    }
+
+    .box:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 18px 32px rgba(44,111,183,.22);
+    }
+
+    .box h3 {
+      font-family: 'Guby';
+      letter-spacing: 1px;
+      color: #2c6fb7;
+      font-size: 28px;
+      margin-bottom: 12px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      text-shadow:
+        0 3px 0 #ffffff,
+        0 6px 0 rgba(25,100,190,.18),
+        0 8px 12px rgba(0,0,0,.14);
+    }
+
+    .box p {
+      font-size: 16px;
+      margin: 0;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+        .dato-curioso {
+      margin-top: 35px;
+      background: linear-gradient(180deg, #fff7d8, #eefbd7);
+      border-left: 8px solid #f0c419;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+      cursor: pointer;
+      transition: .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dato-curioso:hover {
+      transform: scale(1.03);
+    }
+
+    .dato-curioso::after {
+      content: "⭐";
+      position: absolute;
+      right: 25px;
+      top: 18px;
+      font-size: 34px;
+      animation: girar 4s linear infinite;
+    }
+
+    .dato-curioso h2 {
+      font-family: 'Guby';
+      color: #c07d00;
+      font-size: 34px;
+      text-align: center;
+      margin-top: 0;
+      text-shadow: 0 3px 0 #ffffff;
+    }
+
+    .juego-clasificar {
+      margin-top: 40px;
+      background: linear-gradient(180deg, #fff7d8, #eefbd7);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 15px 30px rgba(0,0,0,.10);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .juego-clasificar::before {
+      content: "🎮";
+      position: absolute;
+      left: 35px;
+      top: 25px;
+      font-size: 34px;
+      animation: flotar 2s infinite ease-in-out;
+    }
+
+    .juego-clasificar h2 {
+      font-family: 'Guby';
+      color: #c07d00;
+      font-size: 36px;
+      text-align: center;
+      text-shadow: 0 3px 0 #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .elementos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .tarjeta {
+      background: white;
+      border: 3px solid #d9e8ff;
+      border-radius: 18px;
+      padding: 14px 18px;
+      font-size: 18px;
+      color: #1f3c5c;
+      cursor: grab;
+      box-shadow: 0 8px 18px rgba(0,0,0,.10);
+      user-select: none;
+      transition: .2s ease;
+      font-weight: 800;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-4px) scale(1.04);
+      background: #f1fbff;
+    }
+
+    .tarjeta:active {
+      cursor: grabbing;
+    }
+
+    .zonas-juego {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .zona {
+      flex: 1;
+      min-width: 280px;
+      min-height: 220px;
+      border-radius: 24px;
+      padding: 20px;
+      background: #f5fbff;
+      border: 4px dashed #b8d7f5;
+      transition: .25s ease;
+    }
+
+    .zona h3 {
+      font-family: 'Guby';
+      margin-bottom: 15px;
+      font-size: 30px;
+      text-align: center;
+      text-shadow: 0 3px 0 #ffffff;
+    }
+
+    .zona.limpio h3 {
+      color: #2f9e44;
+    }
+
+    .zona.contaminado h3 {
+      color: #d94841;
+    }
+
+    .contenedor-zona {
+      min-height: 140px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-content: flex-start;
+      justify-content: center;
+    }
+
+    .zona.hover {
+      background: #eef8ff;
+      border-color: #6aa8df;
+      transform: scale(1.02);
+    }
+
+    .acciones-juego {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .acciones-juego button {
+      padding: 13px 22px;
+      border: none;
+      border-radius: 14px;
+      background: #2c6fb7;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s ease;
+      box-shadow: 0 8px 18px rgba(44,111,183,.20);
+    }
+
+    .acciones-juego button:hover {
+      transform: scale(1.06);
+      background: #245f9b;
+    }
+
+    .resultado-juego {
+      margin-top: 18px;
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .correcta {
+      border-color: #55c26a !important;
+      background: #eefced !important;
+    }
+
+    .incorrecta {
+      border-color: #e35d5d !important;
+      background: #fff1f1 !important;
+    }
+
+    .modal-fondo {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,25,45,.25);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+      overflow: hidden;
+      animation: fondoAparece .3s ease;
+    }
+
+    .modal-fondo.activo {
+      display: flex;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 560px;
+      background: linear-gradient(145deg, #ffffff, #dcf7ff, #eaffd8);
+      border-radius: 32px;
+      padding: 35px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0,0,0,.25);
+      border: 4px solid #ffffff;
+      animation: modalEntrada .45s ease;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    .modal-card::before {
+      content: "";
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      background: rgba(92,204,255,.25);
+      border-radius: 50%;
+      top: -80px;
+      right: -80px;
+    }
+
+    .cerrar-modal {
+      position: absolute;
+      top: 15px;
+      right: 18px;
+      width: 42px;
+      height: 42px;
+      border: 3px solid #bdefff;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #1f3c5c;
+      font-size: 22px;
+      cursor: pointer;
+      z-index: 20;
+    }
+
+    .modal-video {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 10px;
+      position: relative;
+      z-index: 3;
+      animation: flotar 2s ease-in-out infinite;
+      filter: drop-shadow(0 0 18px rgba(94,190,255,.45));
+    }
+
+    .modal-video img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .modal-card h2 {
+      font-family: 'Guby';
+      letter-spacing: 2px;
+      color: #2368b8;
+      font-size: 40px;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 3;
+      text-shadow:
+        0 4px 0 #ffffff,
+        0 8px 0 rgba(25,100,190,.18),
+        0 12px 18px rgba(0,0,0,.18);
+    }
+
+    .modal-card p {
+      color: #2d3e50;
+      font-size: 19px;
+      line-height: 1.7;
+      margin: 0;
+      position: relative;
+      z-index: 3;
+    }
+
+    .burbuja {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(80,200,255,.35);
+      z-index: 1;
+      animation: subir 4s infinite ease-in-out;
+    }
+
+    .b1 { width: 25px; height: 25px; left: 40px; bottom: 30px; }
+    .b2 { width: 18px; height: 18px; right: 80px; bottom: 60px; animation-delay: 1s; }
+    .b3 { width: 14px; height: 14px; left: 80px; top: 80px; animation-delay: 2s; }
+    .b4 { width: 20px; height: 20px; right: 130px; top: 90px; animation-delay: 1.5s; }
+
+    .estrella {
+      position: absolute;
+      font-size: 24px;
+      z-index: 2;
+      animation: girar 4s linear infinite;
+    }
+
+    .e1 { top: 25px; left: 35px; }
+    .e2 { bottom: 25px; right: 40px; animation-delay: 1s; }
+
+    @keyframes modalEntrada {
+      from { opacity: 0; transform: translateY(35px) scale(.85); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes fondoAparece {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes flotar {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes subir {
+      0% { transform: translateY(0); opacity: .3; }
+      50% { transform: translateY(-25px); opacity: 1; }
+      100% { transform: translateY(0); opacity: .3; }
+    }
+
+    @keyframes girar {
+      from { transform: rotate(0deg) scale(1); }
+      to { transform: rotate(360deg) scale(1.1); }
+    }
+
+    @media(max-width:768px) {
+      .contenido {
+        margin: 20px;
+        padding: 25px;
+      }
+
+      .contenido h1 {
+        font-size: 36px;
+      }
+
+      .contenido p {
+        font-size: 17px;
+      }
+
+      .zonas-juego {
+        flex-direction: column;
+      }
+
+      .tarjeta {
+        font-size: 16px;
+      }
+
+      .modal-card {
+        padding: 30px 22px;
+      }
+
+      .modal-card h2 {
+        font-size: 28px;
+      }
+
+      .modal-card p {
+        font-size: 16px;
+      }
+
+      .modal-video {
+        width: 110px;
+        height: 110px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="main-nav">
+    <div class="logo">
+      <a href="index.html">
+        <img src="Imagenes/logo.png" alt="Logo Edukidz">
+      </a>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="Respiracion.html">Respiracion</a></li>
+        <li><a href="Intercambio_gases.html">Intercambio</a></li>
+        <li><a href="Regulacion.html">Regulacion</a></li>
+        <li><a href="limpieza_del_aire.html" class="activo">Limpieza del Aire</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-icons">
+      <a href="Juegos.html" class="juegos-btn">
+        <span class="juegos-texto">Juegos</span>
+        <span class="juegos-icono">🎮</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="contenido">
+
+    <div class="page-banner limpieza">
+      <div class="page-banner-logo">
+        <img src="Imagenes/logo.png" alt="Logo Edukidz">
+      </div>
+
+      <div class="page-banner-texto">
+        <p>Mira como la nariz y las vias respiratorias ayudan a filtrar el aire.</p>
+      </div>
+    </div>
+
+    <h1>🌿 COMO SE LIMPIA EL AIRE?</h1>
+
+    <p>
+      El <span class="palabra-modal" onclick="abrirModal('aire')">aire</span>
+      que respiramos puede tener
+      <span class="palabra-modal" onclick="abrirModal('polvo')">polvo</span>,
+      <span class="palabra-modal" onclick="abrirModal('humo')">humo</span>
+      y microbios. Nuestro cuerpo tiene formas de limpiarlo antes de que llegue a los
+      <span class="palabra-modal" onclick="abrirModal('pulmones')">pulmones</span>.
+    </p>
+
+    <p>
+      La <span class="palabra-modal" onclick="abrirModal('nariz')">nariz</span>
+      tiene pequenos pelitos y mucosidad que atrapan la suciedad.
+      Tambien <span class="palabra-modal" onclick="abrirModal('estornudar')">estornudar</span>
+      o toser ayuda a expulsar lo que no sirve.
+    </p>
+
+    <div class="imagen-central">
+      <img src="Imagenes/limpiar.png" alt="Limpieza del aire">
+    </div>
+
+    <div class="info-boxes">
+
+      <div class="box" onclick="abrirModal('nariz')">
+        <h3>👃 LA NARIZ LIMPIA</h3>
+        <p>La nariz atrapa polvo y suciedad antes de que entren al cuerpo.</p>
+      </div>
+
+      <div class="box" onclick="abrirModal('estornudar')">
+        <h3>🤧 ESTORNUDAR</h3>
+        <p>Ayuda a sacar lo que no sirve del aire que respiramos.</p>
+      </div>
+
+      <div class="box" onclick="abrirModal('cuidar')">
+        <h3>😷 CUIDAR EL AIRE</h3>
+        <p>Evitar humo y contaminacion ayuda a respirar mejor.</p>
+      </div>
+
+    </div>
+
+    <div class="dato-curioso" onclick="abrirModal('filtro')">
+      <h2>⭐ DATO CURIOSO</h2>
+      <p>
+        Los vellos de la nariz y la mucosidad ayudan a atrapar polvo y microbios.
+        Por eso la nariz es como un filtro natural.
+      </p>
+    </div>
+        <!-- JUEGO -->
+    <div class="juego-clasificar">
+      <h2>🎮 JUEGO: CLASIFICA EL AIRE</h2>
+      <p>Arrastra cada dibujo a la caja correcta.</p>
+
+      <div class="elementos" id="elementos">
+        <div class="tarjeta" draggable="true" data-tipo="limpio">🌳 Arbol</div>
+        <div class="tarjeta" draggable="true" data-tipo="contaminado">🚗 Humo de carro</div>
+        <div class="tarjeta" draggable="true" data-tipo="limpio">🚲 Bicicleta</div>
+        <div class="tarjeta" draggable="true" data-tipo="contaminado">🔥 Basura quemada</div>
+        <div class="tarjeta" draggable="true" data-tipo="limpio">🌼 Flores</div>
+        <div class="tarjeta" draggable="true" data-tipo="contaminado">🏭 Fabrica con humo</div>
+      </div>
+
+      <div class="zonas-juego">
+
+        <div class="zona limpio" data-zona="limpio">
+          <h3>🌿 AIRE LIMPIO</h3>
+          <div class="contenedor-zona"></div>
+        </div>
+
+        <div class="zona contaminado" data-zona="contaminado">
+          <h3>🌫️ AIRE CONTAMINADO</h3>
+          <div class="contenedor-zona"></div>
+        </div>
+
+      </div>
+
+      <div class="acciones-juego">
+        <button onclick="revisarJuego()">Revisar respuestas</button>
+        <button onclick="reiniciarJuego()">Reiniciar</button>
+      </div>
+
+      <p id="resultadoJuego" class="resultado-juego"></p>
+    </div>
+
+  </section>
+</main>
+
+<!-- MODAL -->
+<div id="modalFondo" class="modal-fondo" onclick="cerrarModalDesdeFondo(event)">
+
+  <div class="modal-card">
+
+    <div class="burbuja b1"></div>
+    <div class="burbuja b2"></div>
+    <div class="burbuja b3"></div>
+    <div class="burbuja b4"></div>
+
+    <div class="estrella e1">✨</div>
+    <div class="estrella e2">⭐</div>
+
+    <button class="cerrar-modal" onclick="cerrarModal()">×</button>
+
+    <div class="modal-video">
+      <img id="modalIcono" src="" alt="">
+    </div>
+
+    <h2 id="modalTitulo"></h2>
+
+    <p id="modalTexto"></p>
+
+  </div>
+
+</div>
+
+<script>
+let tarjetaArrastrada = null;
+
+function activarTarjetas() {
+  const tarjetas = document.querySelectorAll('.tarjeta');
+  const zonas = document.querySelectorAll('.zona');
+
+  tarjetas.forEach(tarjeta => {
+    tarjeta.addEventListener('dragstart', () => {
+      tarjetaArrastrada = tarjeta;
+    });
+  });
+
+  zonas.forEach(zona => {
+    zona.addEventListener('dragover', e => {
+      e.preventDefault();
+      zona.classList.add('hover');
+    });
+
+    zona.addEventListener('dragleave', () => {
+      zona.classList.remove('hover');
+    });
+
+    zona.addEventListener('drop', e => {
+      e.preventDefault();
+      zona.classList.remove('hover');
+
+      const contenedor = zona.querySelector('.contenedor-zona');
+
+      if(tarjetaArrastrada){
+        contenedor.appendChild(tarjetaArrastrada);
+      }
+    });
+  });
+}
+
+function revisarJuego() {
+  const todasTarjetas = document.querySelectorAll('.tarjeta');
+  let correctas = 0;
+
+  todasTarjetas.forEach(tarjeta => {
+    tarjeta.classList.remove('correcta', 'incorrecta');
+
+    const zonaPadre = tarjeta.closest('.zona');
+
+    if(!zonaPadre) return;
+
+    const tipoCorrecto = tarjeta.dataset.tipo;
+    const zonaActual = zonaPadre.dataset.zona;
+
+    if(tipoCorrecto === zonaActual){
+      tarjeta.classList.add('correcta');
+      correctas++;
+    } else {
+      tarjeta.classList.add('incorrecta');
+    }
+  });
+
+  const resultado = document.getElementById('resultadoJuego');
+
+  if(correctas === 6){
+    resultado.textContent = 'Excelente! Clasificaste todo correctamente.';
+    resultado.style.color = '#2f9e44';
+  } else {
+    resultado.textContent = 'Tienes ' + correctas + ' de 6 correctas. Intenta otra vez.';
+    resultado.style.color = '#c07d00';
+  }
+}
+
+function reiniciarJuego() {
+  const contenedorInicial = document.getElementById('elementos');
+  const tarjetas = document.querySelectorAll('.tarjeta');
+
+  tarjetas.forEach(tarjeta => {
+    tarjeta.classList.remove('correcta', 'incorrecta');
+    contenedorInicial.appendChild(tarjeta);
+  });
+
+  const resultado = document.getElementById('resultadoJuego');
+  resultado.textContent = '';
+}
+
+function abrirModal(tipo) {
+  const modal = document.getElementById("modalFondo");
+  const titulo = document.getElementById("modalTitulo");
+  const texto = document.getElementById("modalTexto");
+  const icono = document.getElementById("modalIcono");
+
+  if(tipo === "aire"){
+    titulo.textContent = "QUE ES EL AIRE?";
+    texto.textContent = "El aire es lo que respiramos. Aunque no lo vemos, entra por la nariz o la boca y ayuda a que nuestro cuerpo reciba oxigeno.";
+    icono.src = "Imagenes/aire.webp";
+  }
+
+  if(tipo === "polvo"){
+    titulo.textContent = "QUE ES EL POLVO?";
+    texto.textContent = "El polvo son pequenas particulas que flotan en el aire. La nariz ayuda a atraparlo para que no llegue facilmente a los pulmones.";
+    icono.src = "Imagenes/polvo.webp";
+  }
+
+  if(tipo === "humo"){
+    titulo.textContent = "POR QUE EL HUMO HACE DANO?";
+    texto.textContent = "El humo ensucia el aire y puede hacer que respirar sea mas dificil. Por eso es mejor estar lejos del humo.";
+    icono.src = "Imagenes/humo.webp";
+  }
+
+  if(tipo === "pulmones"){
+    titulo.textContent = "POR QUE CUIDAR LOS PULMONES?";
+    texto.textContent = "Los pulmones trabajan todo el dia para ayudarnos a respirar. Si el aire esta limpio, ellos pueden trabajar mejor.";
+    icono.src = "Imagenes/pulmones.webp";
+  }
+
+  if(tipo === "nariz"){
+    titulo.textContent = "LA NARIZ ES UN FILTRO";
+    texto.textContent = "La nariz tiene pequenos pelitos y mucosidad que ayudan a atrapar polvo, suciedad y microbios antes de que entren al cuerpo.";
+    icono.src = "Imagenes/nariz.webp";
+  }
+
+  if(tipo === "estornudar"){
+    titulo.textContent = "PARA QUE SIRVE ESTORNUDAR?";
+    texto.textContent = "Estornudar ayuda a sacar del cuerpo cosas que molestan, como polvo o microbios. Es una forma natural de protegernos.";
+    icono.src = "Imagenes/estornudo.webp";
+  }
+
+  if(tipo === "cuidar"){
+    titulo.textContent = "COMO CUIDAR EL AIRE?";
+    texto.textContent = "Podemos cuidar el aire evitando el humo, sembrando arboles, usando bicicleta y manteniendo limpios los lugares donde vivimos.";
+    icono.src = "Imagenes/polvo.webp";
+  }
+
+  if(tipo === "filtro"){
+    titulo.textContent = "UN FILTRO NATURAL";
+    texto.textContent = "La nariz funciona como un filtro. Atrapa muchas cosas pequenas para que el aire llegue mas limpio a los pulmones.";
+    icono.src = "Imagenes/estornudo.webp";
+  }
+
+  modal.classList.add("activo");
+}
+
+function cerrarModal() {
+  document.getElementById("modalFondo").classList.remove("activo");
+}
+
+function cerrarModalDesdeFondo(event) {
+  if(event.target.id === "modalFondo"){
+    cerrarModal();
+  }
+}
+
+activarTarjetas();
+</script>
+
+</body>
+</html>
