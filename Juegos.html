@@ -753,6 +753,23 @@
       display:flex;
     }
 
+    .felicitacion-global.perdiste{
+      background:rgba(120,0,0,0.35);
+    }
+
+    .felicitacion-global.perdiste .felicitacion-titulo{
+      background:rgba(210,40,40,0.86);
+      color:white;
+      text-shadow:
+        0 4px 0 #8b0000,
+        0 0 20px rgba(255,0,0,.8);
+    }
+
+    .felicitacion-global.perdiste .fw{
+      background:#ff3333;
+      color:#ff3333;
+    }
+
     .felicitacion-titulo{
       position:relative;
       z-index:3;
@@ -979,7 +996,7 @@
 
               <div class="quiz-side">
                 <div class="quiz-dato" id="quizAciertos">Aciertos: 0</div>
-                <div class="quiz-calificacion" id="quizCalificacion">Calificación: 0 / 10</div>
+                <div class="quiz-calificacion" id="quizCalificación">Calificación: 0 / 10</div>
                 <div class="quiz-estrellas" id="quizEstrellas">⭐ 0</div>
                 <div class="quiz-resumen" id="quizResumen">
                   Lee con atención, responde y al final verás tu nota.
@@ -1040,7 +1057,7 @@
   <div class="fw fw8"></div>
   <div class="fw fw9"></div>
   <div class="fw fw10"></div>
-  <div class="felicitacion-titulo">🎉 ¡Felicidades, ganaste! 🎉</div>
+  <div class="felicitacion-titulo" id="textoFinalGlobal">🎉 ¡Felicidades, ganaste! 🎉</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -1067,38 +1084,117 @@
 
   let timeoutFelicitacion = null;
 
-  function mostrarFelicitacionGlobal(texto = "🎉 ¡Felicidades, ganaste! 🎉"){
-    const felicitacion = document.getElementById("felicitacionGlobal");
-    felicitacion.querySelector(".felicitacion-titulo").textContent = texto;
-    felicitacion.classList.add("activa");
+  function mostrarGanaste(texto = "🎉 ¡Felicidades, ganaste! 🎉"){
+    const pantalla = document.getElementById("felicitacionGlobal");
+    const titulo = document.getElementById("textoFinalGlobal");
+
+    pantalla.classList.remove("perdiste");
+    titulo.textContent = texto;
+    pantalla.classList.add("activa");
 
     if(timeoutFelicitacion){
       clearTimeout(timeoutFelicitacion);
     }
 
     timeoutFelicitacion = setTimeout(() => {
-      felicitacion.classList.remove("activa");
+      pantalla.classList.remove("activa");
+    }, 3000);
+  }
+
+  function mostrarPerdiste(texto = "❌ PERDISTE ❌"){
+    const pantalla = document.getElementById("felicitacionGlobal");
+    const titulo = document.getElementById("textoFinalGlobal");
+
+    pantalla.classList.add("perdiste");
+    titulo.textContent = texto;
+    pantalla.classList.add("activa");
+
+    if(timeoutFelicitacion){
+      clearTimeout(timeoutFelicitacion);
+    }
+
+    timeoutFelicitacion = setTimeout(() => {
+      pantalla.classList.remove("activa");
+      pantalla.classList.remove("perdiste");
     }, 3000);
   }
 
   const palabras = [
-    { palabra: "PULMONES", pista: "Pista: órganos que usamos para respirar" },
-    { palabra: "NARIZ", pista: "Pista: parte del cuerpo que limpia el aire" },
-    { palabra: "OXIGENO", pista: "Pista: gas que necesitamos para vivir" },
-    { palabra: "ALVEOLOS", pista: "Pista: bolsitas pequeñas dentro de los pulmones" },
-    { palabra: "AIRE", pista: "Pista: lo que respiramos" },
-    { palabra: "TOSER", pista: "Pista: ayuda a expulsar lo que no sirve" },
-    { palabra: "RESPIRAR", pista: "Pista: acción de tomar y sacar aire" },
-    { palabra: "CEREBRO", pista: "Pista: controla la respiración" }
+    {
+      palabra: "PULMONES",
+      pistas: [
+        "Pista 1: Son dos órganos importantes para respirar.",
+        "Pista 2: Están dentro del pecho.",
+        "Pista 3: Se llenan de aire cuando inhalamos."
+      ]
+    },
+    {
+      palabra: "NARIZ",
+      pistas: [
+        "Pista 1: Ayuda a limpiar el aire.",
+        "Pista 2: Tiene pequeños pelitos.",
+        "Pista 3: Por aquí puede entrar el aire."
+      ]
+    },
+    {
+      palabra: "OXÍGENO",
+      pistas: [
+        "Pista 1: Es un gas que el cuerpo necesita.",
+        "Pista 2: Viaja por la sangre.",
+        "Pista 3: Nos ayuda a tener energía."
+      ]
+    },
+    {
+      palabra: "ALVEOLOS",
+      pistas: [
+        "Pista 1: Son bolsitas pequeñas.",
+        "Pista 2: Están dentro de los pulmones.",
+        "Pista 3: Allí pasa el oxígeno a la sangre."
+      ]
+    },
+    {
+      palabra: "AIRE",
+      pistas: [
+        "Pista 1: No lo vemos, pero lo respiramos.",
+        "Pista 2: Entra por la nariz o la boca.",
+        "Pista 3: Lleva oxígeno al cuerpo."
+      ]
+    },
+    {
+      palabra: "TOSER",
+      pistas: [
+        "Pista 1: Es una acción que ayuda a protegernos.",
+        "Pista 2: Puede sacar aire con fuerza.",
+        "Pista 3: Ayuda a expulsar polvo o molestias."
+      ]
+    },
+    {
+      palabra: "RESPIRAR",
+      pistas: [
+        "Pista 1: Lo hacemos todos los días.",
+        "Pista 2: Consiste en tomar y soltar aire.",
+        "Pista 3: Ayuda a que el cuerpo reciba oxígeno."
+      ]
+    },
+    {
+      palabra: "CEREBRO",
+      pistas: [
+        "Pista 1: Ayuda a controlar muchas funciones del cuerpo.",
+        "Pista 2: Trabaja incluso cuando dormimos.",
+        "Pista 3: También ayuda a controlar la respiración."
+      ]
+    }
   ];
 
   const tecladoLetras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
   const maxErrores = 9;
 
+  let palabraSeleccionada = null;
   let palabraActual = "";
   let letrasAdivinadas = [];
   let errores = 0;
   let ganadas = 0;
+  let pistaActual = 0;
 
   function crearTeclado(){
     const teclado = document.getElementById("teclado");
@@ -1161,6 +1257,11 @@
       if (!letrasAdivinadas.includes(letra)) letrasAdivinadas.push(letra);
     } else {
       errores++;
+
+      if(palabraSeleccionada && pistaActual < palabraSeleccionada.pistas.length - 1){
+        pistaActual++;
+        document.getElementById("pistaTexto").textContent = palabraSeleccionada.pistas[pistaActual];
+      }
     }
 
     mostrarPalabra();
@@ -1182,14 +1283,15 @@
 
       document.getElementById("spark").style.display = "block";
       document.getElementById("estadoCara").textContent = "🌟 ¡Salvaste a Tung Tung Sahur!";
-      mostrarFelicitacionGlobal();
+      mostrarGanaste();
       return;
     }
 
     if (errores >= maxErrores) {
-      mensaje.textContent = "😵 Perdiste. La palabra era: " + palabraActual;
+      mensaje.textContent = "La palabra era: " + palabraActual + ". Puedes intentarlo otra vez.";
       mensaje.style.color = "#d94841";
       desactivarTeclado();
+      mostrarPerdiste("❌ PERDISTE ❌");
     }
   }
 
@@ -1198,12 +1300,13 @@
   }
 
   function nuevoJuego(){
-    const aleatoria = palabras[Math.floor(Math.random() * palabras.length)];
-    palabraActual = aleatoria.palabra;
+    palabraSeleccionada = palabras[Math.floor(Math.random() * palabras.length)];
+    palabraActual = palabraSeleccionada.palabra;
     letrasAdivinadas = [];
     errores = 0;
+    pistaActual = 0;
 
-    document.getElementById("pistaTexto").textContent = aleatoria.pista;
+    document.getElementById("pistaTexto").textContent = palabraSeleccionada.pistas[pistaActual];
     document.getElementById("mensaje").textContent = "";
     document.getElementById("mensaje").style.color = "#1f3c5c";
     document.getElementById("spark").style.display = "none";
@@ -1371,49 +1474,57 @@
       pregunta: "¿Qué órganos usamos para respirar?",
       opciones: ["Los pulmones", "Los riñones", "El estómago"],
       correcta: 0,
-      explicacion: "Muy bien. Los pulmones son los órganos que usamos para respirar."
+      bien: "¡Perfecto! Los pulmones son los órganos que usamos para respirar.",
+      mal: "🌟 Sigue aprendiendo. La respuesta correcta es: los pulmones."
     },
     {
       pregunta: "¿Por dónde entra el aire al cuerpo?",
       opciones: ["Por la nariz o la boca", "Por el corazón", "Por el hígado"],
       correcta: 0,
-      explicacion: "Correcto. El aire entra por la nariz o por la boca."
+      bien: "¡Muy bien! El aire entra por la nariz o por la boca.",
+      mal: "Casi. El aire entra por la nariz o por la boca."
     },
     {
       pregunta: "¿Qué gas necesita el cuerpo para vivir?",
       opciones: ["Oxígeno", "Dióxido de carbono", "Vapor"],
       correcta: 0,
-      explicacion: "Exacto. El cuerpo necesita oxígeno para vivir."
+      bien: "¡Excelente! El cuerpo necesita oxígeno para vivir.",
+      mal: "Casi. El gas que el cuerpo necesita para vivir es el oxígeno."
     },
     {
       pregunta: "¿Qué gas sacamos cuando exhalamos?",
       opciones: ["Dióxido de carbono", "Oxígeno puro", "Helio"],
       correcta: 0,
-      explicacion: "Muy bien. Cuando exhalamos sacamos dióxido de carbono."
+      bien: "¡Correcto! Al exhalar sacamos dióxido de carbono.",
+      mal: "Casi. Cuando exhalamos, sacamos dióxido de carbono."
     },
     {
       pregunta: "¿Qué parte ayuda a limpiar el aire antes de que entre?",
       opciones: ["La nariz", "El páncreas", "Los huesos"],
       correcta: 0,
-      explicacion: "Sí. La nariz ayuda a limpiar el aire antes de que llegue a los pulmones."
+      bien: "¡Muy bien! La nariz ayuda a limpiar el aire.",
+      mal: "Casi. La nariz ayuda a limpiar el aire antes de que llegue a los pulmones."
     },
     {
       pregunta: "¿Qué órgano ayuda a controlar la respiración?",
       opciones: ["El cerebro", "La vejiga", "El codo"],
       correcta: 0,
-      explicacion: "Correcto. El cerebro ayuda a controlar la respiración."
+      bien: "¡Perfecto! El cerebro ayuda a controlar la respiración.",
+      mal: "Casi. El cerebro ayuda a controlar la respiración."
     },
     {
       pregunta: "¿Dónde ocurre el intercambio de gases?",
       opciones: ["En los alvéolos", "En los dientes", "En las uñas"],
       correcta: 0,
-      explicacion: "Exacto. El intercambio de gases ocurre en los alvéolos."
+      bien: "¡Excelente! El intercambio de gases ocurre en los alvéolos.",
+      mal: "Casi. El intercambio de gases ocurre en los alvéolos."
     },
     {
       pregunta: "¿Qué ayuda a sacar del aire lo que no sirve?",
       opciones: ["Los pelitos de la nariz y el moco", "Las pestañas", "Las rodillas"],
       correcta: 0,
-      explicacion: "Muy bien. Los pelitos de la nariz y el moco atrapan polvo y suciedad."
+      bien: "¡Muy bien! Los pelitos de la nariz y el moco atrapan polvo y suciedad.",
+      mal: "Casi. Los pelitos de la nariz y el moco ayudan a atrapar polvo y suciedad."
     }
   ];
 
@@ -1486,14 +1597,14 @@
 
     if(esCorrecta){
       boton.classList.add("correcta");
-      document.getElementById("quizFeedback").textContent = "✅ " + pregunta.explicacion;
+      document.getElementById("quizFeedback").textContent = "✅ " + pregunta.bien;
       document.getElementById("quizFeedback").style.color = "#2f9e44";
       quizAciertos++;
       quizEstrellas++;
     } else {
       boton.classList.add("incorrecta");
       quizVidas--;
-      document.getElementById("quizFeedback").textContent = "❌ " + pregunta.explicacion;
+      document.getElementById("quizFeedback").textContent = "❌ " + pregunta.mal;
       document.getElementById("quizFeedback").style.color = "#d94841";
     }
 
@@ -1519,7 +1630,7 @@
   function actualizarPanelQuiz(){
     const nota = ((quizAciertos / quizPreguntas.length) * 10).toFixed(1);
     document.getElementById("quizAciertos").textContent = `Aciertos: ${quizAciertos} de ${quizPreguntas.length}`;
-    document.getElementById("quizCalificacion").textContent = `Calificación: ${nota} / 10`;
+    document.getElementById("quizCalificación").textContent = `Calificación: ${nota} / 10`;
     document.getElementById("quizEstrellas").textContent = `⭐ ${quizEstrellas}`;
     document.getElementById("quizVidas").textContent = "❤️ ".repeat(Math.max(quizVidas,0)).trim() || "💔";
   }
@@ -1535,7 +1646,7 @@
     } else if(nota >= 9){
       mensajeFinal = "🌟 ¡Excelente trabajo!";
       observacion = "Aprendiste muchísimo sobre la respiración.";
-      mostrarFelicitacionGlobal("🏅 ¡Excelente calificación! 🎉");
+      mostrarGanaste("🏅 ¡Excelente calificación! 🎉");
     } else if(nota >= 7){
       mensajeFinal = "👏 ¡Muy bien!";
       observacion = "Vas aprendiendo muy bien.";
@@ -1683,7 +1794,7 @@
     if(estaResuelto()){
       document.getElementById("puzzleText").textContent = "¡Lo lograste! Armaste el puzzle correctamente.";
       document.getElementById("puzzleStatus").textContent = "✅ Completado en " + moves + " movimientos";
-      mostrarFelicitacionGlobal("🧩 ¡Puzzle completado! 🎉");
+      mostrarGanaste("🧩 ¡Puzzle completado! 🎉");
     }
   }
 

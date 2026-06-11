@@ -637,26 +637,26 @@
     </div>
 
     <div class="page-banner-texto">
-      <p>Conoce como el cuerpo controla la respiracion en cada momento.</p>
+      <p>Conoce cómo el cuerpo controla la respiración en cada momento.</p>
     </div>
   </div>
 
-  <h1>🧠 COMO REGULA EL CUERPO LA RESPIRACION?</h1>
+  <h1>🧠 COMO REGULA EL CUERPO LA RESPIRACIÓN?</h1>
 
   <p>
-    Nuestro cuerpo sabe cuando debemos respirar mas rapido o mas despacio.
-    Eso se llama <span class="palabra-modal" onclick="abrirModal('regular')">regular la respiracion</span>.
+    Nuestro cuerpo sabe cuando debemos respirar más rápido o más despacio.
+    Eso se llama <span class="palabra-modal" onclick="abrirModal('regular')">regular la respiración</span>.
   </p>
 
   <p>
-    Cuando corremos, jugamos o saltamos, nuestro cuerpo necesita mas
-    <span class="palabra-modal" onclick="abrirModal('oxigeno')">oxigeno</span>.
-    Entonces respiramos mas rapido. Cuando estamos tranquilos o dormimos,
-    respiramos mas lento.
+    Cuando corremos, jugamos o saltamos, nuestro cuerpo necesita más
+    <span class="palabra-modal" onclick="abrirModal('oxígeno')">oxígeno</span>.
+    Entonces respiramos más rápido. Cuando estamos tranquilos o dormimos,
+    respiramos más lento.
   </p>
 
     <div class="imagen-central">
-    <img src="Imagenes/regulacion.png" alt="Regulacion de la respiracion">
+    <img src="Imagenes/regulacion.png" alt="Regulacion de la respiración">
   </div>
 
   <div class="info-boxes">
@@ -664,21 +664,21 @@
     <div class="box" onclick="abrirModal('rapido')">
       <h3>🏃 MAS RAPIDO</h3>
       <p>
-        Cuando hacemos ejercicio, respiramos mas rapido porque el cuerpo necesita mas aire.
+        Cuando hacemos ejercicio, respiramos más rápido porque el cuerpo necesita más aire.
       </p>
     </div>
 
     <div class="box" onclick="abrirModal('lento')">
       <h3>😌 MAS LENTO</h3>
       <p>
-        Cuando descansamos, respiramos mas despacio porque el cuerpo esta tranquilo.
+        Cuando descansamos, respiramos más despacio porque el cuerpo está tranquilo.
       </p>
     </div>
 
     <div class="box" onclick="abrirModal('siempre')">
       <h3>🫁 SIEMPRE RESPIRAMOS</h3>
       <p>
-        Nuestro cuerpo controla la respiracion todo el tiempo, incluso cuando dormimos.
+        Nuestro cuerpo controla la respiración todo el tiempo, incluso cuando dormimos.
       </p>
     </div>
 
@@ -687,13 +687,13 @@
   <div class="dato-curioso" onclick="abrirModal('cerebro')">
     <h2>⭐ DATO CURIOSO</h2>
     <p>
-      El cerebro ayuda a controlar la respiracion sin que tengamos que pensarlo.
+      El cerebro ayuda a controlar la respiración sin que tengamos que pensarlo.
     </p>
   </div>
 
   <div class="ejercicio-respiracion">
 
-    <h2>🫁 Ejercicio de respiracion</h2>
+    <h2>🫁 Ejercicio de respiración</h2>
 
     <p>
       Vamos a respirar juntos. Sigue las instrucciones:
@@ -843,7 +843,7 @@ function empezarJuego(){
   "⏸️ Pausar";
 
   document.getElementById("mensajeJuego").innerText =
-  "Comienza la ronda 1!";
+  "¡Comienza la ronda 1!";
 
   ciclo();
 }
@@ -880,13 +880,13 @@ function iniciarFase(fase, tiempo){
 
   if(fase === "mantener"){
 
-    texto.innerText = "Manten";
+    texto.innerText = "Mantén";
 
     circulo.className =
     "circulo-respira mantener";
 
     mensaje.innerText =
-    "Manten el aire...";
+    "Mantén el aire...";
   }
 
   if(fase === "exhalar"){
@@ -941,7 +941,7 @@ function continuarFase(){
         if(rondaActual < totalRondas){
 
           document.getElementById("mensajeJuego").innerText =
-          "Bien hecho! Vamos a la ronda " + (rondaActual + 1);
+          "¡Bien hecho! Vamos a la ronda " + (rondaActual + 1);
 
           setTimeout(() => {
 
@@ -975,7 +975,7 @@ function finalizarJuego(){
   "";
 
   document.getElementById("mensajeJuego").innerText =
-  "Terminaste el ejercicio de respiracion.";
+  "Terminaste el ejercicio de respiración.";
 
   document.getElementById("btnStart").innerText =
   "▶️ Empezar";
@@ -1033,19 +1033,19 @@ function abrirModal(tipo){
     "COMO CONTROLA EL CUERPO?";
 
     texto.textContent =
-    "El cuerpo sabe cuando respirar rapido o lento. El cerebro ayuda automaticamente.";
+    "El cuerpo sabe cuando respirar rápido o lento. El cerebro ayuda automáticamente.";
 
     icono.src =
     "Imagenes/regular.webp";
   }
 
-  if(tipo === "oxigeno"){
+  if(tipo === "oxígeno"){
 
     titulo.textContent =
-    "POR QUE ES IMPORTANTE EL OXIGENO?";
+    "POR QUE ES IMPORTANTE EL OXÍGENO?";
 
     texto.textContent =
-    "El oxigeno ayuda a tener energia para correr, jugar y aprender.";
+    "El oxígeno ayuda a tener energía para correr, jugar y aprender.";
 
     icono.src =
     "Imagenes/oxigeno.webp";
@@ -1057,7 +1057,7 @@ function abrirModal(tipo){
     "POR QUE RESPIRAMOS RAPIDO?";
 
     texto.textContent =
-    "Cuando corremos, el cuerpo necesita mas oxigeno.";
+    "Cuando corremos, el cuerpo necesita más oxígeno.";
 
     icono.src =
     "Imagenes/correr.webp";
@@ -1069,7 +1069,7 @@ function abrirModal(tipo){
     "POR QUE RESPIRAMOS LENTO?";
 
     texto.textContent =
-    "Cuando descansamos, respiramos lentamente porque el cuerpo esta tranquilo.";
+    "Cuando descansamos, respiramos lentamente porque el cuerpo está tranquilo.";
 
     icono.src =
     "Imagenes/dormir.webp";
@@ -1093,7 +1093,7 @@ function abrirModal(tipo){
     "EL CEREBRO AYUDA";
 
     texto.textContent =
-    "El cerebro envia señales para controlar la respiracion.";
+    "El cerebro envia señales para controlar la respiración.";
 
     icono.src =
     "Imagenes/regular.webp";

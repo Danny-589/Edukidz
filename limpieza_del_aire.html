@@ -678,7 +678,7 @@
       </div>
 
       <div class="page-banner-texto">
-        <p>Mira como la nariz y las vias respiratorias ayudan a filtrar el aire.</p>
+        <p>Mira cómo la nariz y las vías respiratorias ayudan a filtrar el aire.</p>
       </div>
     </div>
 
@@ -689,14 +689,15 @@
       que respiramos puede tener
       <span class="palabra-modal" onclick="abrirModal('polvo')">polvo</span>,
       <span class="palabra-modal" onclick="abrirModal('humo')">humo</span>
-      y microbios. Nuestro cuerpo tiene formas de limpiarlo antes de que llegue a los
+      y <span class="palabra-modal" onclick="abrirModal('microbios')">microbios</span>.
+      Nuestro cuerpo tiene formas de limpiarlo antes de que llegue a los
       <span class="palabra-modal" onclick="abrirModal('pulmones')">pulmones</span>.
     </p>
 
     <p>
       La <span class="palabra-modal" onclick="abrirModal('nariz')">nariz</span>
-      tiene pequenos pelitos y mucosidad que atrapan la suciedad.
-      Tambien <span class="palabra-modal" onclick="abrirModal('estornudar')">estornudar</span>
+      tiene pequeños pelitos y mucosidad que atrapan la suciedad.
+      También <span class="palabra-modal" onclick="abrirModal('estornudar')">estornudar</span>
       o toser ayuda a expulsar lo que no sirve.
     </p>
 
@@ -718,8 +719,13 @@
 
       <div class="box" onclick="abrirModal('cuidar')">
         <h3>😷 CUIDAR EL AIRE</h3>
-        <p>Evitar humo y contaminacion ayuda a respirar mejor.</p>
+        <p>Evitar humo y contaminación ayuda a respirar mejor.</p>
       </div>
+
+      <div class="box" onclick="abrirModal('microbios')">
+  <h3>🦠 MICROBIOS</h3>
+  <p>Son seres muy pequeños que viajan en el aire y la nariz ayuda a atraparlos.</p>
+</div>
 
     </div>
 
@@ -727,7 +733,7 @@
       <h2>⭐ DATO CURIOSO</h2>
       <p>
         Los vellos de la nariz y la mucosidad ayudan a atrapar polvo y microbios.
-        Por eso la nariz es como un filtro natural.
+        Por eso la nariz es cómo un filtro natural.
       </p>
     </div>
         <!-- JUEGO -->
@@ -736,12 +742,12 @@
       <p>Arrastra cada dibujo a la caja correcta.</p>
 
       <div class="elementos" id="elementos">
-        <div class="tarjeta" draggable="true" data-tipo="limpio">🌳 Arbol</div>
+        <div class="tarjeta" draggable="true" data-tipo="limpio">🌳 Árbol</div>
         <div class="tarjeta" draggable="true" data-tipo="contaminado">🚗 Humo de carro</div>
         <div class="tarjeta" draggable="true" data-tipo="limpio">🚲 Bicicleta</div>
         <div class="tarjeta" draggable="true" data-tipo="contaminado">🔥 Basura quemada</div>
         <div class="tarjeta" draggable="true" data-tipo="limpio">🌼 Flores</div>
-        <div class="tarjeta" draggable="true" data-tipo="contaminado">🏭 Fabrica con humo</div>
+        <div class="tarjeta" draggable="true" data-tipo="contaminado">🏭 Fábrica con humo</div>
       </div>
 
       <div class="zonas-juego">
@@ -857,7 +863,7 @@ function revisarJuego() {
   const resultado = document.getElementById('resultadoJuego');
 
   if(correctas === 6){
-    resultado.textContent = 'Excelente! Clasificaste todo correctamente.';
+    resultado.textContent = '¡Excelente! Clasificaste todo correctamente.';
     resultado.style.color = '#2f9e44';
   } else {
     resultado.textContent = 'Tienes ' + correctas + ' de 6 correctas. Intenta otra vez.';
@@ -885,51 +891,58 @@ function abrirModal(tipo) {
   const icono = document.getElementById("modalIcono");
 
   if(tipo === "aire"){
-    titulo.textContent = "QUE ES EL AIRE?";
-    texto.textContent = "El aire es lo que respiramos. Aunque no lo vemos, entra por la nariz o la boca y ayuda a que nuestro cuerpo reciba oxigeno.";
+    titulo.textContent = "¿QUÉ ES EL AIRE?";
+    texto.textContent = "El aire es lo que respiramos. Aunque no lo vemos, entra por la nariz o la boca y ayuda a que nuestro cuerpo reciba oxígeno.";
     icono.src = "Imagenes/aire.webp";
   }
 
   if(tipo === "polvo"){
-    titulo.textContent = "QUE ES EL POLVO?";
-    texto.textContent = "El polvo son pequenas particulas que flotan en el aire. La nariz ayuda a atraparlo para que no llegue facilmente a los pulmones.";
+    titulo.textContent = "¿QUÉ ES EL POLVO?";
+    texto.textContent = "El polvo son pequeñas partículas que flotan en el aire. La nariz ayuda a atraparlo para que no llegue fácilmente a los pulmones.";
     icono.src = "Imagenes/polvo.webp";
   }
 
   if(tipo === "humo"){
-    titulo.textContent = "POR QUE EL HUMO HACE DANO?";
-    texto.textContent = "El humo ensucia el aire y puede hacer que respirar sea mas dificil. Por eso es mejor estar lejos del humo.";
+    titulo.textContent = "¿POR QUÉ EL HUMO HACE DAÑO?";
+    texto.textContent = "El humo ensucia el aire y puede hacer que respirar sea más difícil. Por eso es mejor estar lejos del humo.";
     icono.src = "Imagenes/humo.webp";
   }
 
   if(tipo === "pulmones"){
-    titulo.textContent = "POR QUE CUIDAR LOS PULMONES?";
-    texto.textContent = "Los pulmones trabajan todo el dia para ayudarnos a respirar. Si el aire esta limpio, ellos pueden trabajar mejor.";
+    titulo.textContent = "¿POR QUÉ CUIDAR LOS PULMONES?";
+    texto.textContent = "Los pulmones trabajan todo el día para ayudarnos a respirar. Si el aire está limpio, ellos pueden trabajar mejor.";
     icono.src = "Imagenes/pulmones.webp";
   }
 
   if(tipo === "nariz"){
     titulo.textContent = "LA NARIZ ES UN FILTRO";
-    texto.textContent = "La nariz tiene pequenos pelitos y mucosidad que ayudan a atrapar polvo, suciedad y microbios antes de que entren al cuerpo.";
+    texto.textContent = "La nariz tiene pequeños pelitos y mucosidad que ayudan a atrapar polvo, suciedad y microbios antes de que entren al cuerpo.";
     icono.src = "Imagenes/nariz.webp";
   }
 
   if(tipo === "estornudar"){
-    titulo.textContent = "PARA QUE SIRVE ESTORNUDAR?";
-    texto.textContent = "Estornudar ayuda a sacar del cuerpo cosas que molestan, como polvo o microbios. Es una forma natural de protegernos.";
+    titulo.textContent = "¿PARA QUÉ SIRVE ESTORNUDAR?";
+    texto.textContent = "Estornudar ayuda a sacar del cuerpo cosas que molestan, cómo polvo o microbios. Es una forma natural de protegernos.";
     icono.src = "Imagenes/estornudo.webp";
   }
 
   if(tipo === "cuidar"){
-    titulo.textContent = "COMO CUIDAR EL AIRE?";
+    titulo.textContent = "¿CÓMO CUIDAR EL AIRE?";
     texto.textContent = "Podemos cuidar el aire evitando el humo, sembrando arboles, usando bicicleta y manteniendo limpios los lugares donde vivimos.";
     icono.src = "Imagenes/polvo.webp";
   }
 
   if(tipo === "filtro"){
     titulo.textContent = "UN FILTRO NATURAL";
-    texto.textContent = "La nariz funciona como un filtro. Atrapa muchas cosas pequenas para que el aire llegue mas limpio a los pulmones.";
+    texto.textContent = "La nariz funciona cómo un filtro. Atrapa muchas cosas pequeñas para que el aire llegue más limpio a los pulmones.";
     icono.src = "Imagenes/estornudo.webp";
+  }
+
+  
+  if(tipo === "microbios"){
+    titulo.textContent = "¿QUE SON LOS MICROBIOS?";
+    texto.textContent = "Los microbios son seres muy pequeños que no podemos ver. Algunos pueden causar enfermedades y la nariz ayuda a atraparlos antes de que lleguen a los pulmones.";
+    icono.src = "Imagenes/aire.webp";
   }
 
   modal.classList.add("activo");

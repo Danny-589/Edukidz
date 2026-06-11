@@ -522,7 +522,7 @@
     </div>
 
     <div class="page-banner-texto">
-      <p>Aprende como entra y sale el aire de nuestro cuerpo.</p>
+      <p>Aprende cómo entra y sale el aire de nuestro cuerpo.</p>
     </div>
   </div>
 
@@ -530,10 +530,10 @@
 
   <p>
     Los <span class="palabra-modal" onclick="abrirModal('pulmones')">pulmones</span>
-    son dos organos muy importantes de nuestro
+    son dos órganos muy importantes de nuestro
     <span class="palabra-modal" onclick="abrirModal('cuerpo')">cuerpo</span>.
     Nos ayudan a <span class="palabra-modal" onclick="abrirModal('respirar')">respirar</span>
-    y a obtener el <span class="palabra-modal" onclick="abrirModal('oxigeno')">oxigeno</span>
+    y a obtener el <span class="palabra-modal" onclick="abrirModal('oxígeno')">oxígeno</span>
     que necesitamos para vivir.
   </p>
 
@@ -541,9 +541,9 @@
     Cuando respiramos, el <span class="palabra-modal" onclick="abrirModal('aire')">aire</span>
     entra por la nariz o la boca y viaja hasta los
     <span class="palabra-modal" onclick="abrirModal('pulmones')">pulmones</span>.
-    Dentro de ellos el <span class="palabra-modal" onclick="abrirModal('oxigeno')">oxigeno</span>
+    Dentro de ellos el <span class="palabra-modal" onclick="abrirModal('oxígeno')">oxígeno</span>
     pasa a la sangre y el
-    <span class="palabra-modal" onclick="abrirModal('carbono')">dioxido de carbono</span>
+    <span class="palabra-modal" onclick="abrirModal('carbono')">dióxido de carbono</span>
     sale del cuerpo.
   </p>
 
@@ -559,27 +559,27 @@
 
     <div class="box" onclick="abrirModal('respirar')">
       <h3>🌬️ RESPIRAR</h3>
-      <p>Los pulmones se llenan de aire cuando inhalamos y se vacian cuando exhalamos.</p>
+      <p>Los pulmones se llenan de aire cuando inhalamos y se vacían cuando exhalamos.</p>
     </div>
 
-    <div class="box" onclick="abrirModal('oxigeno')">
+    <div class="box" onclick="abrirModal('oxígeno')">
       <h3>🩸 OXIGENO</h3>
-      <p>El oxigeno que entra a los pulmones pasa a la sangre y viaja por todo el cuerpo.</p>
+      <p>El oxígeno que entra a los pulmones pasa a la sangre y viaja por todo el cuerpo.</p>
     </div>
 
     <div class="box" onclick="abrirModal('carbono')">
       <h3>💨 DIOXIDO DE CARBONO</h3>
-      <p>Los pulmones tambien ayudan a eliminar el dioxido de carbono cuando exhalamos.</p>
+      <p>Los pulmones también ayudan a eliminar el dióxido de carbono cuando exhalamos.</p>
     </div>
 
     <div class="box" onclick="abrirModal('pulmones')">
       <h3>🫁 PULMONES</h3>
-      <p>Los pulmones son organos que trabajan todo el dia para ayudarnos a respirar.</p>
+      <p>Los pulmones son órganos que trabajan todo el día para ayudarnos a respirar.</p>
     </div>
 
     <div class="box" onclick="abrirModal('cuerpo')">
       <h3>🧍‍♂️ CUERPO</h3>
-      <p>El cuerpo usa el oxigeno para tener energia, moverse, jugar y aprender.</p>
+      <p>El cuerpo usa el oxígeno para tener energía, moverse, jugar y aprender.</p>
     </div>
 
   </div>
@@ -632,37 +632,37 @@ function abrirModal(tipo) {
 
   if (tipo === "respirar") {
     titulo.textContent = "QUE SIGNIFICA RESPIRAR?";
-    texto.textContent = "Respirar es tomar aire para que nuestro cuerpo reciba oxigeno. Cuando inhalamos, el aire entra a los pulmones. Cuando exhalamos, el aire sale con lo que el cuerpo ya no necesita.";
+    texto.textContent = "Respirar es tomar aire para que nuestro cuerpo reciba oxígeno. Cuando inhalamos, el aire entra a los pulmones. Cuando exhalamos, el aire sale con lo que el cuerpo ya no necesita.";
     icono.src = "Imagenes/respiracion.webp";
   }
 
-  if (tipo === "oxigeno") {
-    titulo.textContent = "POR QUE ES IMPORTANTE EL OXIGENO?";
-    texto.textContent = "El oxigeno ayuda a que nuestro cuerpo tenga energia. Viaja por la sangre y llega a todas las partes del cuerpo para que podamos movernos, jugar y aprender.";
+  if (tipo === "oxígeno") {
+    titulo.textContent = "POR QUE ES IMPORTANTE EL OXÍGENO?";
+    texto.textContent = "El oxígeno ayuda a que nuestro cuerpo tenga energía. Viaja por la sangre y llega a todas las partes del cuerpo para que podamos movernos, jugar y aprender.";
     icono.src = "Imagenes/oxigeno.webp";
   }
 
   if (tipo === "carbono") {
-    titulo.textContent = "QUE ES EL DIOXIDO DE CARBONO?";
-    texto.textContent = "El dioxido de carbono es un gas que el cuerpo ya no necesita. Por eso, cuando exhalamos, los pulmones ayudan a sacarlo.";
+    titulo.textContent = "QUE ES EL DIÓXIDO DE CARBONO?";
+    texto.textContent = "El dióxido de carbono es un gas que el cuerpo ya no necesita. Por eso, cuando exhalamos, los pulmones ayudan a sacarlo.";
     icono.src = "Imagenes/co2.webp";
   }
 
   if (tipo === "pulmones") {
     titulo.textContent = "QUE HACEN LOS PULMONES?";
-    texto.textContent = "Los pulmones trabajan como dos globitos dentro del pecho. Se inflan cuando tomamos aire y ayudan a llevar oxigeno a la sangre para que todo el cuerpo pueda funcionar bien.";
+    texto.textContent = "Los pulmones trabajan cómo dos globitos dentro del pecho. Se inflan cuando tomamos aire y ayudan a llevar oxígeno a la sangre para que todo el cuerpo pueda funcionar bien.";
     icono.src = "Imagenes/pulmones.webp";
   }
 
   if (tipo === "cuerpo") {
-    titulo.textContent = "COMO AYUDA EL OXIGENO AL CUERPO?";
-    texto.textContent = "El cuerpo usa el oxigeno como una ayuda para tener fuerza. Gracias a el podemos correr, saltar, pensar, jugar y aprender en clase sin cansarnos tan rapido.";
+    titulo.textContent = "COMO AYUDA EL OXÍGENO AL CUERPO?";
+    texto.textContent = "El cuerpo usa el oxígeno cómo una ayuda para tener fuerza. Gracias a él podemos correr, saltar, pensar, jugar y aprender en clase sin cansarnos tan rápido.";
     icono.src = "Imagenes/cuerpo.png";
   }
 
   if (tipo === "aire") {
     titulo.textContent = "POR QUE NECESITAMOS AIRE?";
-    texto.textContent = "El aire entra por la nariz o la boca cuando inhalamos. Luego viaja hacia los pulmones para que el cuerpo pueda usar el oxigeno.";
+    texto.textContent = "El aire entra por la nariz o la boca cuando inhalamos. Luego viaja hacia los pulmones para que el cuerpo pueda usar el oxígeno.";
     icono.src = "Imagenes/aire.webp";
   }
 
